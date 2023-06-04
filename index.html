@@ -191,6 +191,175 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/post/a6503fc7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="几一">
+      <meta itemprop="description" content="欢迎来到TC小白的窝儿">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiye's">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/post/a6503fc7.html" class="post-title-link" itemprop="url">Vale + VS Code 实现自动化风格检查</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-06-04 12:29:43 / 修改时间：12:37:41" itemprop="dateCreated datePublished" datetime="2023-06-04T12:29:43+08:00">2023-06-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/technical-writing/" itemprop="url" rel="index"><span itemprop="name">technical writing</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="在-VS-Code-中使用-Vale-自动检查风格和语法"><a href="#在-VS-Code-中使用-Vale-自动检查风格和语法" class="headerlink" title="在 VS Code 中使用 Vale 自动检查风格和语法"></a>在 VS Code 中使用 Vale 自动检查风格和语法</h1><h2 id="使用-Chocolatey-安装-Vale"><a href="#使用-Chocolatey-安装-Vale" class="headerlink" title="使用 Chocolatey 安装 Vale"></a>使用 Chocolatey 安装 Vale</h2><p>Chocolatey 是一个用于 Windows 的软件包管理器，简化了安装、更新和管理软件应用程序的过程。它提供了一个命令行界面（CLI），让用户可以轻松搜索、安装和卸载软件包。Chocolatey自动化了从各种来源（如官方网站或软件仓库）下载软件的过程，并为您处理安装和配置步骤。</p>
+<p>使用 Chocolatey，您可以管理开源和商业软件包，包括开发工具、生产力应用程序、实用工具等。它使您能够通过自动安装多个软件包一次性设置和配置Windows环境，这在配置新计算机或在多台计算机上部署应用程序时特别有用。</p>
+<p>要在 Windows 上使用 Chocolatey 安装 Vale，请按照以下分步说明操作：</p>
+<ol>
+<li><p><strong>安装 Chocolatey：</strong></p>
+<p> a. 按 <code>Win+X</code> 键，然后选择“Windows 终端（管理员）”，或者在开始菜单中搜索“Windows PowerShell”，右键单击它并选择“以管理员身份运行”。</p>
+<p> b. 在 PowerShell 窗口中，确保您已设置正确的执行策略，通过运行以下命令来设置：</p>
+<pre><code> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy Bypass -Scope Process -Force</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p> c. 现在，运行以下命令来安装 Chocolatey：</p>
+<pre><code> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iex ((New-Object System.Net.WebClient).DownloadString(&#x27;https://chocolatey.org/install.ps1&#x27;))</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p> d. 安装完成后，关闭 PowerShell 窗口。</p>
+</li>
+<li><p><strong>安装 Vale：</strong></p>
+<p> a. 以管理员身份打开一个新的 PowerShell 窗口（如步骤 1a 所述）。</p>
+<p> b. 运行以下命令安装 Vale：</p>
+<pre><code> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install vale</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p> c. 等待安装完成。Chocolatey 会自动为您下载并安装 Vale。</p>
+</li>
+<li><p><strong>验证安装：</strong></p>
+<p> a. 关闭并重新以管理员身份打开 PowerShell 窗口。</p>
+<p> b. 运行以下命令检查 Vale 版本：</p>
+<pre><code> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vale -v</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p> 如果 Vale 安装正确，您应该在输出中看到版本号。</p>
+</li>
+<li><p><strong>配置 Vale：</strong></p>
+<p> a. 要获得初始 Vale 配置，您需要克隆或下载 <a target="_blank" rel="noopener" href="https://github.com/errata-ai/vale-boilerplate">Vale-boilerplate</a>。</p>
+<p> b. <a target="_blank" rel="noopener" href="https://github.com/errata-ai/vale-boilerplate/archive/refs/heads/master.zip">点此下载</a>，如果您要克隆，请确保电脑上安装 Git，然后在命令行中输入：</p>
+<pre><code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/errata-ai/vale-boilerplate.git</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p> c. 用文本编辑器打开 <code>.vale.ini</code> 文件，并根据您的需求进行自定义。您也可以在<a target="_blank" rel="noopener" href="https://vale.sh/generator/">Config Generator</a>中创建自定义配置，并将代码块复制粘贴覆盖 .vale.ini 文件，然后运行<code>vale sync</code>对其进行初始化。</p>
+<p> d. 由于国内防火墙（GFW）问题，此命令失效，即使通过网络代理也无法执行命令。您可以到 <a target="_blank" rel="noopener" href="https://github.com/errata-ai/packages#available-styles">Vale 风格指南仓库</a> 下载您所需要的风格指南到 Style 目录，并打开 .vale.ini，将文件夹名称添加到 BasedOnStyles 中。</p>
+</li>
+<li><p><strong>使用 Vale：</strong></p>
+<p>a. 现在，您可以使用 Vale 来检查文本文件中的风格和语法问题。要执行此操作，请在 vale 目录下打开 PowerShell 运行以下命令：</p>
+<pre><code> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vale &quot;path\to\your\file.txt&quot;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p> b. 将 <code>C:\Vale-config\.vale.ini</code> 替换为您的配置文件的路径，将 <code>path\to\your\file.txt</code> 替换为您要检查的文本文件的路径。</p>
+<p> c. 您已成功在 Windows 上使用 Chocolatey 安装并配置了 Vale。<a href="#%E5%9C%A8-vs-code-%E4%B8%AD%E4%BD%BF%E7%94%A8-vale">点此查看</a>使用 VS Code 使用 Vale 进行自动化检查。</p>
+</li>
+<li><p><strong>升级 Vale：</strong></p>
+<p> 您可以使用 Chocolatey 更新 Vale。</p>
+<p> a. 确保您已经安装了 Vale。</p>
+<pre><code> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vale -v</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p> 此命令显示安装的 Vale 版本。</p>
+<p> b. 确保您安装了 Chocolatey。</p>
+<pre><code> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco -v</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p> 此命令显示安装的 Chocolatey 版本。</p>
+<p> c. 更新 Vale 版本。</p>
+<pre><code> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco upgrade vale</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p> 此命令将 Vale 更新为存储为 Chocolatey 包的最新版本的 Vale 。</p>
+</li>
+</ol>
+<hr>
+<h2 id="在-VS-Code-中使用-Vale"><a href="#在-VS-Code-中使用-Vale" class="headerlink" title="在 VS Code 中使用 Vale"></a>在 VS Code 中使用 Vale</h2><p>要在 VS Code 中配置扩展插件 Vale，您需要按照以下步骤进行操作：</p>
+<ol>
+<li><p>安装 Vale 插件：打开 VS Code 并进入扩展视图（可以使用快捷键 <code>Ctrl+Shift+X</code> 或点击左侧活动栏中的插件图标）。在搜索栏中输入”Vale”，找到Vale插件并点击”安装”按钮进行安装。</p>
+</li>
+<li><p>配置 Vale 插件：安装完成后，打开 VS Code 的设置（可以使用快捷键 <code>Ctrl+，</code>或点击左下角齿轮图标）。在设置中搜索”vale.valeCLI.config”，在输入框中输入配置文件（.vale.ini）的绝对路径，比如<code>C:\Vale-config\.vale.ini</code></p>
+</li>
+<li><p>重新加载 VS Code 窗口，以使配置更改生效。</p>
+</li>
+<li><p>现在，您已经成功配置了 Vale 扩展插件。它将在您编辑的文件中提供文本检查和风格建议。当你在 VS Code 中打开任何 Markdown 文件时，Vale 会自动在有问题的单词或句子下面划线。您可以将鼠标悬停在带下划线的文本上或转到VS Code 底部的问题选项卡。</p>
+</li>
+</ol>
+<hr>
+<h2 id="创建自己的风格指南"><a href="#创建自己的风格指南" class="headerlink" title="创建自己的风格指南"></a>创建自己的风格指南</h2><p>要添加您自己的规则：</p>
+<ol>
+<li><p>使用您自己的风格指南名称创建一个目录。例如，my-styleguide。</p>
+</li>
+<li><p>将 my-styleguide 目录复制到包含所有其他样式指南的 Style 目录。</p>
+</li>
+<li><p>在 VS Code 中打开 .vale.ini 配置文件。</p>
+</li>
+<li><p>将您的 my-styleguide 文件名添加到 BasedOnStyles 中。</p>
+</li>
+<li><p>保存更改。</p>
+</li>
+<li><p>将编辑好的 YML 文件（即规则）添加到 my-styleguide 目录中。</p>
+</li>
+</ol>
+<p>参考：<br>[1]: ChatGPT<br>[2]: <a target="_blank" rel="noopener" href="https://tw-docs.com/docs/vale/">https://tw-docs.com/docs/vale/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/post/91ce7628.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -222,7 +391,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-05-29 01:19:37" itemprop="dateModified" datetime="2023-05-29T01:19:37+08:00">2023-05-29</time>
+                <time title="修改时间：2023-05-31 00:49:22" itemprop="dateModified" datetime="2023-05-31T00:49:22+08:00">2023-05-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -285,7 +454,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">code</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="tag">&lt;/<span class="name">code</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>Sample CSS rule<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span><span class="comment">&lt;!--位于内容上方和下方都可以--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="组织网页内容"><a href="#组织网页内容" class="headerlink" title="组织网页内容"></a>组织网页内容</h2><ul>
-<li>主内容（main）<br /><br>main 元素的内容应该是该页的唯一内容。W3C HTML5 规范规定，页面应该只有一个 main 区段，并且不应该嵌套在其它区段中。</li>
+<li>主内容（main）<br>main 元素的内容应该是该页的唯一内容。W3C HTML5 规范规定，页面应该只有一个 main 区段，并且不应该嵌套在其它区段中。</li>
 <li>页眉（header）</li>
 <li>页脚（footer）</li>
 <li>区段&#x2F;章节（section）</li>
@@ -527,7 +696,37 @@
 <p>代表网站：小米、腾讯等</p>
 </li>
 </ol>
-
+<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><h3 id="为什么需要定位？"><a href="#为什么需要定位？" class="headerlink" title="为什么需要定位？"></a>为什么需要定位？</h3><p>定位可以让盒子自由地在某个盒子内移动位置或者固定屏幕中某个位置，并且可以盖住其它盒子。</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>定位&#x3D;定位模式+边偏移</p>
+<p>定位模式：</p>
+<p><code>position: value</code> {</p>
+<ul>
+<li><p><code>static</code> 静态定位（了解）</p>
+</li>
+<li><p><code>relative</code> 相对定位（重要）</p>
+<ol>
+<li>移动位置的时候参照点是<strong>自身原来的位置</strong></li>
+<li>不脱离文档流，文档流的位置继续占有</li>
+<li>最佳实践：给绝对定位当父元素（子绝父相）</li>
+</ol>
+</li>
+<li><p><code>absolute</code> 绝对定位（重要）</p>
+<ol>
+<li>移动位置的时候是相对于它的<strong>祖先元素</strong>来说的</li>
+</ol>
+</li>
+<li><p><code>fixed</code> 固定定位</p>
+</li>
+</ul>
+<p>}</p>
+<p>边偏移：</p>
+<ul>
+<li><code>top</code></li>
+<li><code>bottom</code></li>
+<li><code>left</code></li>
+<li><code>right</code></li>
+</ul>
+<h3 id="子绝父相布局"><a href="#子绝父相布局" class="headerlink" title="子绝父相布局"></a>子绝父相布局</h3><h3 id="轮播图布局"><a href="#轮播图布局" class="headerlink" title="轮播图布局"></a>轮播图布局</h3>
       
     </div>
 
@@ -747,20 +946,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -804,12 +1003,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">11k</span>
+    <span title="站点总字数">14k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">19 分钟</span>
+    <span title="站点阅读时长">23 分钟</span>
 </div>
 
         
