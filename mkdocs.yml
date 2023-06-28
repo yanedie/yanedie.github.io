@@ -1,0 +1,101 @@
+site_name: Yanedie | Notebook
+repo_name: anotherblog
+repo_url: https://github.com/yanedie/anotherblog
+
+#nav
+nav:
+  - 首页: index.md
+  - 项目:
+    - 尚品汇:
+      - 顶部导航条: gmall/1.topnav.md
+      - 头部: gmall/2.header.md
+      - 主导航: gmall/3.mainnav.md
+      - 侧边导航 ①: gmall/4.sidenav.md
+
+#Theme
+theme:
+  language: zh
+  name: material
+  logo: 
+  favicon: 
+  icon:
+    repo: fontawesome/brands/git-alt
+  features:
+    - content.tooltips
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.top
+    # 左侧导航栏收缩
+    - navigation.indexes
+    # 页面底部导航
+    - navigation.footer
+    # 文章顶部路径
+    - navigation.path
+
+plugins:
+  - search:
+      language: 'ja'
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - open-in-new-tab
+  - glightbox
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/extra.js
+
+markdown_extensions:
+# 安全说明 用法：https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage
+  - admonition
+# 向几乎每个Markdown内联和块级元素添加HTML属性和CSS类
+  - attr_list
+# 向文档添加定义列表 用法：https://squidfunk.github.io/mkdocs-material/reference/lists/#using-definition-lists
+  - def_list
+# 脚注 用法：https://squidfunk.github.io/mkdocs-material/reference/footnotes/
+  - footnotes
+# 允许在HTML内部编写Markdown
+  - md_in_html
+# 自动从文档中生成一个目录
+  - toc:
+      permalink: '#'
+# 添加了在Markdown中创建表的功能
+  - tables
+# 改进了加粗和斜体的MD语法检测
+  - pymdownx.betterem
+# 添加了突出显示文本和使用简单语法定义子标和上标的功能 用法：https://squidfunk.github.io/mkdocs-material/reference/formatting/#highlighting-text，https://squidfunk.github.io/mkdocs-material/reference/formatting/#sub-and-superscripts
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+# 允许使用Critic Markup来突出显示文档中添加、删除或更新的部分
+  - pymdownx.critic
+# 增强了Admonition扩展，使生成的调用可折叠
+  - pymdownx.details
+# 使用表情符号:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+# 突出显示代码块和内联代码块的语法
+  - pymdownx.highlight:
+      auto_title: true # 显示代码名称
+      anchor_linenums: true # 添加代码块行号
+# 允许任意嵌套代码和内容块，包括警告、选项卡、列表和所有其他元素。
+  - pymdownx.superfences
+# 呈现键盘键和组合键 用法：https://squidfunk.github.io/mkdocs-material/reference/formatting/#adding-keyboard-keys
+  - pymdownx.keys
+# 页面内部tab
+  - pymdownx.tabbed:
+      alternate_style: true
+      # slugify: !!python/object/apply:pymdownx.slugs.slugify
+      #   kwds:
+      #     case: lower
+# 任务列表 用法：https://squidfunk.github.io/mkdocs-material/reference/lists/#using-task-lists
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+copyright: Copyright &copy; 2023 Yanedie
+
