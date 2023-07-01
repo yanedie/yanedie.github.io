@@ -21,6 +21,7 @@ theme:
   icon:
     repo: fontawesome/brands/git-alt
   features:
+    # - content.code.copy
     - content.tooltips
     - navigation.instant
     - navigation.tracking
@@ -42,6 +43,8 @@ plugins:
       enable_creation_date: true
   - open-in-new-tab
   - glightbox
+  - plantuml:
+      puml_url: https://www.plantuml.com/plantuml/
 
 extra_css:
   - stylesheets/extra.css

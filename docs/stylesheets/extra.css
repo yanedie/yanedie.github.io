@@ -100,6 +100,10 @@
     font-weight: 500
 }
 
+.md-typeset__table table {
+    width: 100% !important;
+}
+
 .md-typeset table:not([class]) td:first-of-type {
     white-space: pre
 }
@@ -216,4 +220,18 @@ margin-top: 0
 /* 修复添加js后选中和未选中标签页变成紫色 */
 .md-typeset .tabbed-labels>label>[href]:first-child {
 color: inherit
+}
+
+/* 搜索框和搜索结果圆角 */
+.md-search__input {
+    border-radius:15px;
+}
+
+[data-md-toggle=search]:checked~.md-header .md-search__form {
+    background-color: transparent;
+}
+
+.md-search__scrollwrap {
+    margin-top: 3px;
+    border-radius: 8px;
 }
