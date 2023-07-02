@@ -10,7 +10,9 @@ nav:
       - 顶部导航条: gmall/1.topnav.md
       - 头部: gmall/2.header.md
       - 主导航: gmall/3.mainnav.md
-      - 侧边导航 ①: gmall/4.sidenav.md
+      - 侧边导航: gmall/4.sidenav.md
+      - 轮播图: gmall/5.slideshow.md
+      - 右侧内容区: gmall/6.sideother.md
 
 #Theme
 theme:
