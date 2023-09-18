@@ -6,6 +6,11 @@ hide:
     - navigation
     - footer
 ---
+<link href="https://cdn.bootcdn.net/ajax/libs/datatables/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+$(document).ready( function () { $('#myTable').DataTable(); } );
+</script>
 
 <table id="myTable" class="display" style="width:100%">
 <thead>
@@ -28,7 +33,3 @@ hide:
 <tbody>
 </table>
 
-<script type="text/javascript" charset="utf8" src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>
-$(document).ready( function () { $('#myTable').DataTable(); } );
-</script>

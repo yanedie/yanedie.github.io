@@ -6,7 +6,6 @@ copyright: Copyright &copy; 2023 Yanedie
 
 extra_css:
   - stylesheets/extra.css
-  - stylesheets/jquery.dataTables.min.css
 extra_javascript:
   - javascripts/tablesort.js
   - javascripts/open-in-new-tab.js
@@ -36,11 +35,11 @@ plugins:
 theme:
   language: zh
   name: material
+  palette:
+    primary: custom
   custom_dir: overrides
   logo: 
   favicon: 
-  # icon:
-  #   repo: fontawesome/brands/git-alt
   features:
     - content.code.copy
     - content.tooltips

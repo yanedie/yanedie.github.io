@@ -1,4 +1,4 @@
-* [首页](home.md)
+* [首页](index.md)
 * 博客
     * [博客](blog/index.md)
 * 代码
