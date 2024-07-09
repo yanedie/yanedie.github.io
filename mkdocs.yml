@@ -1,8 +1,39 @@
 site_name: Yanedie | Notebook
 repo_name: anotherblog
 repo_url: https://github.com/yanedie/anotherblog
+copyright: Copyright &copy; 2024 Yanedie
 
-copyright: Copyright &copy; 2023 Yanedie
+nav:
+  - 首页:
+      - index.md
+  - 博客:
+      - blog/index.md
+  - 开发:
+      - code/index.md
+      - Mkdocs 插件:
+        - Mkdocs-Macros: code/mkdocs-plugins/mkdocs-macros/mkdocs-macros.md
+      - React:
+        - React 18 for Beginners:
+          - Building Components: code/react/mosh/1.Building Components.md
+          - Styling Components: code/react/mosh/2.Styling Components.md
+          - Managing Component State: code/react/mosh/3.Managing Component State.md
+          - Buliding a Form: code/react/mosh/4.Buliding a Form.md
+          - Fetching data: code/react/mosh/5.Fetching data.md
+        - The Ultimate React Course 2024 React, Redux & More:
+          - code/react/jonas/note.md
+      - Python:
+          - code/python/gitea-dl.md
+  - 效率:
+      - workflow/index.md
+      - 建站:
+          - 添加评论: workflow/config/comment.md
+          - 自动构建: workflow/config/auto-build.md
+  - 技术传播:
+      - tech-comm/index.md
+      - 公司列表: tech-comm/employer-in-tc.md
+      - 风格检查: tech-comm/Vale-linter-vs-code.md
+  - 标签: tags.md
+  - 关于: about.md
 
 extra_css:
   - stylesheets/extra.css
@@ -10,27 +41,24 @@ extra_javascript:
   - javascripts/tablesort.js
   - javascripts/open-in-new-tab.js
   - javascripts/jquery.dataTables.min.js
-  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
 # exclude-search:
-# 	- tag.md
+# 	- tags.md
 
 plugins:
-  - search:
+  - search
+  # - statistics
   - blog:
+      blog_toc: true
       categories_name: 标签
       categories_toc: true
   - tags:
       tags_file: tags.md
-  - git-revision-date-localized:
-      enable_creation_date: true
-  - glightbox
-  - macros
-  # - gen-files:
-  #     scripts:
-  #       - gen_pages.py
-  - literate-nav:
-      nav_file: nav.md
-  # - section-index
+  # - macros
+
+hooks:
+  - hooks/fancybox.py
+  - hooks/utils.py
+  # - my_hooks.py
 
 theme:
   language: zh
@@ -38,8 +66,8 @@ theme:
   palette:
     primary: custom
   custom_dir: overrides
-  logo: 
-  favicon: 
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
   features:
     - content.code.copy
     - content.tooltips
@@ -47,61 +75,66 @@ theme:
     - navigation.tracking
     - navigation.tabs
     # - navigation.tabs.sticky
+    - navigation.expand
     - navigation.top
     # 左侧导航栏收缩
     - navigation.indexes
     # 页面底部导航
     - navigation.footer
+    - toc.follow
 
 markdown_extensions:
-# 安全说明 用法：https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage
+  # 安全说明 用法：https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage
   - admonition
-# 向几乎每个 Markdown 内联和块级元素添加 HTML 属性和 CSS 类
+  # 向几乎每个 Markdown 内联和块级元素添加 HTML 属性和 CSS 类
   - attr_list
-# 向文档添加定义列表 用法：https://squidfunk.github.io/mkdocs-material/reference/lists/#using-definition-lists
+  # 向文档添加定义列表 用法：https://squidfunk.github.io/mkdocs-material/reference/lists/#using-definition-lists
   - def_list
-# 脚注 用法：https://squidfunk.github.io/mkdocs-material/reference/footnotes/
+  # 脚注 用法：https://squidfunk.github.io/mkdocs-material/reference/footnotes/
   - footnotes
-# 允许在 HTML 内部编写 Markdown
+  # 允许在 HTML 内部编写 Markdown
   - md_in_html
-# 自动从文档中生成一个目录
+  # 自动从文档中生成一个目录
   - toc:
-      permalink: '#'
-# 添加了在 Markdown 中创建表的功能
+      permalink: "#"
+  # 添加了在 Markdown 中创建表的功能
   - tables
-# 改进了加粗和斜体的 MD 语法检测
+  # 改进了加粗和斜体的 MD 语法检测
   - pymdownx.betterem
-# 添加了突出显示文本和使用简单语法定义子标和上标的功能 用法：https://squidfunk.github.io/mkdocs-material/reference/formatting/#highlighting-text，https://squidfunk.github.io/mkdocs-material/reference/formatting/#sub-and-superscripts
+  # 添加了突出显示文本和使用简单语法定义子标和上标的功能 用法：https://squidfunk.github.io/mkdocs-material/reference/formatting/#highlighting-text，https://squidfunk.github.io/mkdocs-material/reference/formatting/#sub-and-superscripts
   - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
-# 允许使用 Critic Markup 来突出显示文档中添加、删除或更新的部分
+  # 允许使用 Critic Markup 来突出显示文档中添加、删除或更新的部分
   - pymdownx.critic
-# 增强了 Admonition 扩展，使生成的调用可折叠
+  # 增强了 Admonition 扩展，使生成的调用可折叠
   - pymdownx.details
-# 使用表情符号:
+  # 使用表情符号:
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-# 突出显示代码块和内联代码块的语法
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator:
+        !!python/name:material.extensions.emoji.to_svg # 突出显示代码块和内联代码块的语法
   - pymdownx.highlight:
       auto_title: false # 显示代码名称
       linenums: true # 添加代码块行号
-# 允许任意嵌套代码和内容块，包括警告、选项卡、列表和所有其他元素。
-  - pymdownx.superfences
-# 呈现键盘键和组合键 用法：https://squidfunk.github.io/mkdocs-material/reference/formatting/#adding-keyboard-keys
+      pygments_lang_class: true
+  # 允许任意嵌套代码和内容块，包括警告、选项卡、列表和所有其他元素。
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format:
+            !!python/name:pymdownx.superfences.fence_code_format
+  # 呈现键盘键和组合键 用法：https://squidfunk.github.io/mkdocs-material/reference/formatting/#adding-keyboard-keys
   - pymdownx.keys
-# 页面内部 tab
+  # 页面内部 tab
   - pymdownx.tabbed:
       alternate_style: true
       # slugify: !!python/object/apply:pymdownx.slugs.slugify
       #   kwds:
       #     case: lower
-# 任务列表 用法：https://squidfunk.github.io/mkdocs-material/reference/lists/#using-task-lists
+  # 任务列表 用法：https://squidfunk.github.io/mkdocs-material/reference/lists/#using-task-lists
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.snippets:
       url_download: true
-
-
-

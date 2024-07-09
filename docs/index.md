@@ -1,58 +1,30 @@
 ---
 comments: true
 hide:
-    - toc
-    - navigation
-    - footer
+  - toc
+  - navigation
+  - footer
+created: 2023-06-23T01:54
+updated: 2024-07-08T23:39
 ---
 # 导航
 
 <div class="grid cards" markdown>
 
-- :fontawesome-solid-blog: __Bolg 博客__ for content and structure
-- :fontawesome-solid-code: __Code 代码__ for interactivity
-- :octicons-workflow-16: __Workflow 效率__ for text running out of boxes
-- :fontawesome-brands-untappd: __Life 生活__ for text running out of boxes
-- :material-tag: __Tags 标签__ ... huh?
-- :material-human-greeting-variant: __About 关于__ ... huh?
+- [:fontawesome-solid-blog: __Bolg 博客__ 日常生活](./blog)
+- [:fontawesome-solid-code: __Code 代码__ 学习笔记](./code)
+- [:octicons-workflow-16: __Workflow 效率__ 常用的工作流](./workflow)
+- [:fontawesome-brands-untappd: __Tech comm__ Docs as code](./tech-comm)
+- [:material-tag: __Tags 标签__ 分类查看历史文章](./tags.md)
+- [:material-human-greeting-variant: __About 关于__ 关于我](./about.md)
 
 </div>
 
-## 精选
-
-<div class="grid cards" markdown>
-
--   :material-clock-fast:{ .lg .middle } __Set up in 5 minutes__
-
-    ---
-
-    Install [`mkdocs-material`](#) with [`pip`](#) and get up
-    and running in minutes
-
-    [:octicons-arrow-right-24: Getting started](#)
-
--   :fontawesome-brands-markdown:{ .lg .middle } __It's just Markdown__
-
-    ---
-
-    Focus on your content and generate a responsive and searchable static site
-
-    [:octicons-arrow-right-24: Reference](#)
-
--   :material-format-font:{ .lg .middle } __Made to measure__
-
-    ---
-
-    Change the colors, fonts, language, icons, logo and more with a few lines
-
-    [:octicons-arrow-right-24: Customization](#)
-
--   :material-scale-balance:{ .lg .middle } __Open Source, MIT__
-
-    ---
-
-    Material for MkDocs is licensed under MIT and available on [GitHub]
-
-    [:octicons-arrow-right-24: License](#)
-
+<div class="card file-block" markdown="1">
+<div class="file-icon"><img src="/assets/images/pdf.svg" style="height: 3em;"></div>
+<div class="file-body">
+<div class="file-title">数学分析（甲）I（H）笔记</div>
+<div class="file-meta">10.8 MB / 12 P / 2022-01-04</div>
+</div>
+<a class="down-button" target="_blank" href="/assets/files/数学分析（甲）I（H）笔记.pdf" markdown="1">:fontawesome-solid-download: 下载</a>
 </div>

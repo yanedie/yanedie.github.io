@@ -1,188 +1,184 @@
 @font-face {
-    font-family: Moderat-Regular-Web;
-    src: url(./Moderat-Regular.woff)
+  font-family: Moderat-Regular-Web;
+  src: url(./Moderat-Regular.woff)
 }
 
 @font-face {
-    font-family: Moderat-Regular-Web;
-    src: url(./Moderat-Bold.woff);
-    font-weight: 700
+  font-family: Moderat-Regular-Web;
+  src: url(./Moderat-Bold.woff);
+  font-weight: 700
 }
 
 @font-face {
-    font-family: Moderat-Regular-Web;
-    src: url(./Moderat-Regular-Italic.woff);
-    font-style: italic
+  font-family: Moderat-Regular-Web;
+  src: url(./Moderat-Regular-Italic.woff);
+  font-style: italic
 }
 
 :root {
-    --color-primary: #1c9782;
-    --color-primary-shade-1: #188170;
-    --color-text-base: #58585F;
-    --color-text-dark: #555555;
-    --color-background-base: #f2f4f8;
-    --color-background-dark: #101330;
-    --color-background-darker: #222225;
-    --color-background-light: #f2f4f8;
-    --color-foreground-base: #dbdfe7;
-    --md-text-font: "Moderat-Regular-Web";
+  --color-primary: #1c9782!important;
+  --color-primary-shade-1: #188170!important;
+  --color-text-base: #58585F!important;
+  --color-text-dark: #555555!important;
+  --color-background-base: #f2f4f8!important;
+  --color-background-dark: #101330!important;
+  --color-background-darker: #222225!important;
+  --color-background-light: #f2f4f8!important;
+  --color-foreground-base: #dbdfe7!important;
+  --md-text-font: "Moderat-Regular-Web"!important;
+}
+
+:root > .tsx {
+
 }
 
 [data-md-color-scheme=default] {
-    --md-default-fg-color--light: var(--color-text-dark);
-    --md-typeset-color: var(--color-text-base);
-    --md-typeset-a-color: var(--color-primary);
-    --md-accent-fg-color: var(--color-primary-shade-1);
-    --md-footer-bg-color: var(--color-background-base);
-    --md-footer-fg-color: var(--color-text-base);
-    --md-footer-bg-color--dark: var(--color-background-dark);
-    --md-primary-bg-color: var(--color-text-dark);
-    --md-primary-fg-color: var(--color-background-dark)
+  --md-default-fg-color--light: var(--color-text-dark)!important;
+  --md-typeset-color: var(--color-text-base)!important;
+  --md-typeset-a-color: var(--color-primary)!important;
+  --md-accent-fg-color: var(--color-primary-shade-1)!important;
+  --md-footer-bg-color: var(--color-background-base)!important;
+  --md-footer-fg-color: var(--color-text-base)!important;
+  --md-footer-bg-color--dark: var(--color-background-dark)!important;
+  --md-primary-bg-color: var(--color-text-dark)!important;
+  --md-primary-fg-color: var(--color-background-dark)!important
 }
 
 [data-md-color-scheme=default] .md-tabs__link--active {
-    font-weight: 600
+  font-weight: 600
 }
 
 .md-typeset h2,.md-typeset h3,[data-md-color-scheme=default] .md-typeset h1 {
-    font-weight: 600
+  font-weight: 600
 }
 
 [data-md-color-scheme=default] .md-header {
-    background-color: var(--color-background-dark);
-    color: #fff
+  background-color: var(--color-background-dark);
+  color: #fff
 }
 
 [data-md-color-scheme=default] .md-tabs {
-    background-color: var(--color-background-dark);
-    color: #fff
+  background-color: var(--color-background-dark);
+  color: #fff
 }
 
 [data-md-color-scheme=default] .md-search__input {
-    border: 1px solid var(--color-foreground-base);
-    background-color: #fff
+  border: 1px solid var(--color-foreground-base);
+  background-color: #fff
 }
 
 [data-md-color-scheme=default] .md-search__input::placeholder {
-    color: var(--color-text-dark);
-    opacity: 1
+  color: var(--color-text-dark);
+  opacity: 1
 }
 
 .md-banner {
-    background-color: #000;
-    color: var(--md-footer-fg-color--light)
+  background-color: #000;
+  color: var(--md-footer-fg-color--light)
 }
 
 .md-typeset .md-consent__controls .md-button {
-    background-color: var(--md-primary-fg-color);
-    border-color: var(--md-primary-fg-color);
-    color: var(--color-background-light)
+  background-color: var(--md-primary-fg-color);
+  border-color: var(--md-primary-fg-color);
+  color: var(--color-background-light)
 }
 
 .md-header__topic:first-child {
-    font-weight: 500
+  font-weight: 500
 }
 
 .md-typeset__table {
-    width: 100%;
+  width: 100%;
 }
 
 .md-typeset table:not([class]) td:first-of-type {
-    white-space: pre
+  white-space: pre
 }
 
 .md-typeset table:not([class]) {
-    font-size: .75rem
-}
-
-.md-typeset img,.md-typeset svg,.md-typeset video {
-    border: 1px solid #dbdfe7;
-    border-radius: 4px
-}
-
-.md-typeset :is(.emojione,.twemoji,.gemoji) svg {
-    border: none
-}
-
-.inline-image {
-    display: inline-block;
-    max-width: 25px;
-    max-height: 25px;
-    vertical-align: middle
-}
-
-.inline-image>img {
-    border: none
-}
-
-/* 卡片网格效果 */
-.md-typeset .grid {
-grid-gap: .4rem;
-display: grid;
-grid-template-columns: repeat(auto-fit,minmax(16rem,1fr));
-margin: 1em 0
-}
-
-.md-typeset .grid.cards>ol,.md-typeset .grid.cards>ul {
-display: contents
-}
-
-.md-typeset .grid.cards>ol>li,.md-typeset .grid.cards>ul>li,.md-typeset .grid>.card {
-border: .05rem solid var(--md-default-fg-color--lightest);
-border-radius: .1rem;
-display: block;
-margin: 0;
-padding: .8rem;
-transition: border .25s,box-shadow .25s
-}
-
-.md-typeset .grid.cards>ol>li:focus-within,.md-typeset .grid.cards>ol>li:hover,.md-typeset .grid.cards>ul>li:focus-within,.md-typeset .grid.cards>ul>li:hover,.md-typeset .grid>.card:focus-within,.md-typeset .grid>.card:hover {
-border-color: #0000;
-box-shadow: var(--md-shadow-z2)
-}
-
-.md-typeset .grid.cards>ol>li>hr,.md-typeset .grid.cards>ul>li>hr,.md-typeset .grid>.card>hr {
-margin-bottom: 1em;
-margin-top: 1em
-}
-
-.md-typeset .grid.cards>ol>li>:first-child,.md-typeset .grid.cards>ul>li>:first-child,.md-typeset .grid>.card>:first-child {
-margin-top: 0
-}
-
-.md-typeset .grid.cards>ol>li>:last-child,.md-typeset .grid.cards>ul>li>:last-child,.md-typeset .grid>.card>:last-child {
-margin-bottom: 0
-}
-
-.md-typeset .grid>*,.md-typeset .grid>.admonition,.md-typeset .grid>.highlight>*,.md-typeset .grid>.highlighttable,.md-typeset .grid>.md-typeset details,.md-typeset .grid>details,.md-typeset .grid>pre {
-margin-bottom: 0;
-margin-top: 0
-}
-
-.md-typeset .grid>.highlight>pre:only-child,.md-typeset .grid>.highlight>pre>code,.md-typeset .grid>.highlighttable,.md-typeset .grid>.highlighttable>tbody,.md-typeset .grid>.highlighttable>tbody>tr,.md-typeset .grid>.highlighttable>tbody>tr>.code,.md-typeset .grid>.highlighttable>tbody>tr>.code>.highlight,.md-typeset .grid>.highlighttable>tbody>tr>.code>.highlight>pre,.md-typeset .grid>.highlighttable>tbody>tr>.code>.highlight>pre>code {
-height: 100%
-}
-
-.md-typeset .grid>.tabbed-set {
-margin-bottom: 0;
-margin-top: 0
-}
-
-/* 修复添加js后选中和未选中标签页变成紫色 */
-.md-typeset .tabbed-labels>label>[href]:first-child {
-color: inherit
+  font-size: .75rem
 }
 
 /* 搜索框和搜索结果圆角 */
 .md-search__input {
-    border-radius:15px;
+  border-radius:15px;
 }
 
 [data-md-toggle=search]:checked~.md-header .md-search__form {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .md-search__scrollwrap {
-    margin-top: 3px;
-    border-radius: 8px;
+  margin-top: 3px;
+  border-radius: 8px;
+}
+
+
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #FEFEFE;
+  background-clip: border-box;
+  border: 0.5px solid #606060;
+  border-radius: .25rem;
+  margin-bottom: 1em;
+}
+
+[data-md-color-scheme="slate"] .card {
+  background-color: #181818;
+  border: 0.5px solid #606060;
+}
+
+.file-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.2em 1em;
+  transition: background-color .3s cubic-bezier(.4,0,.2,1);
+}
+
+.file-block:hover {
+  background-color: #eeeeee;
+}
+[data-md-color-scheme="slate"] .file-block:hover {
+  background-color: #606060;
+}
+
+.file-title {
+  padding-left: 0rem;
+  margin-bottom: 0;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.file-meta {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 1px;
+}
+
+.file-body {
+  padding-left: 1em;
+  margin-right: auto;
+}
+
+.down-button {
+  border: 0.05rem solid;
+  border-radius: 0.1rem;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  padding: 0.25em 0.5em;
+  transition: color .3s,background-color .3s,border-color .3s !important;
+}
+
+.down-button:is(:focus,:hover) {
+  background-color: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-bg-color) !important;
 }

@@ -1,0 +1,203 @@
+{
+  "main": {
+    "id": "caa32cf1794b9778",
+    "type": "split",
+    "children": [
+      {
+        "id": "9048bc35519bfe3c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bb3d659683642671",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "code/react/mosh/5.Fetching data.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "91381b919d1bdc27",
+    "type": "split",
+    "children": [
+      {
+        "id": "fffb7c1188c5fa1d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4e9f0ab40bd75025",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4482ce31b388d00a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "e5ee1c8a7ba0833d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4d85de21dfc364ec",
+    "type": "split",
+    "children": [
+      {
+        "id": "735e1990d02b04cf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c51869547455d696",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "code/react/mosh/5.Fetching data.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "2f0642645fda6feb",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "code/react/mosh/5.Fetching data.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "463ea64bc69aa534",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "677d899b91c92a7a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "code/react/mosh/5.Fetching data.md"
+              }
+            }
+          },
+          {
+            "id": "77b4d2a702572ee3",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "templater-obsidian:Templater": false
+    }
+  },
+  "active": "77b4d2a702572ee3",
+  "lastOpenFiles": [
+    "code/react/mosh/3.Managing Component State.md",
+    "code/react/mosh/4.Buliding a Form.md",
+    "code/react/mosh/5.Fetching data.md",
+    "index.md",
+    "about.md",
+    "code/index.md",
+    "code/python/gitea-dl.md",
+    "code/front-end/HTML+CSS/gmall.md",
+    "code/front-end/HTML+CSS/index.md",
+    "code/react/mosh/1.Building Components.md",
+    "code/react/mosh/2.Styling Components.md",
+    "code/react/mosh/3-Managing Component State.md",
+    "code/react/mosh/1-Building Components.md",
+    "code/react/mosh/5. Fetching data.md",
+    "code/react/mosh/4-Buliding a Form.md",
+    "code/react/mosh/2-Styling Components.md",
+    "code/react/mosh/Styling Components.md",
+    "code/react/mosh/Buliding a Form.md",
+    "code/react/mosh/Fetching data.md",
+    "code/react/mosh/Managing Component State.md",
+    "code/react/mosh/Building Components.md",
+    "code/react/mosh/images/Pasted image 20240609155801.png",
+    "code/react/mosh/images/Pasted image 20240609155252.png",
+    "code/react/mosh/images/Pasted image 20240609154853.png",
+    "code/react/mosh/images/Pasted image 20240609014452.png",
+    "code/react/mosh/images/Pasted image 20240609013354.png",
+    "code/react/mosh/images/Pasted image 20240609013325.png",
+    "code/react/mosh/images/Pasted image 20240609011944.png",
+    "code/react/mosh/images/Pasted image 20240609011302.png",
+    "code/react/mosh/images",
+    "code/react/jonas/note.md",
+    "code/react/mosh",
+    "code/react/新建文件夹",
+    "code/react/jonas",
+    "code/react/React/images/Pasted image 20240609155801.png",
+    "code/react/React/images/Pasted image 20240609154853.png",
+    "code/react/React/images",
+    "code/react/React/5. Fetching data.md",
+    "code/react/React/4-Buliding a Form.md",
+    "code/react/React/3-Managing Component State.md",
+    "code/react/React/2-Styling Components.md",
+    "code/react/React"
+  ]
+}
