@@ -11,16 +11,18 @@ nav:
   - 开发:
       - code/index.md
       - Mkdocs 插件:
-        - Mkdocs-Macros: code/mkdocs-plugins/mkdocs-macros/mkdocs-macros.md
+          - Mkdocs-Macros: code/mkdocs-plugins/mkdocs-macros/mkdocs-macros.md
       - React:
-        - React 18 for Beginners:
-          - Building Components: code/react/mosh/1.Building Components.md
-          - Styling Components: code/react/mosh/2.Styling Components.md
-          - Managing Component State: code/react/mosh/3.Managing Component State.md
-          - Buliding a Form: code/react/mosh/4.Buliding a Form.md
-          - Fetching data: code/react/mosh/5.Fetching data.md
-        - The Ultimate React Course 2024 React, Redux & More:
-          - code/react/jonas/note.md
+          - React 18 for Beginners:
+              - Building Components: code/react/mosh/1.Building Components.md
+              - Styling Components: code/react/mosh/2.Styling Components.md
+              - Managing Component State: code/react/mosh/3.Managing Component State.md
+              - Buliding a Form: code/react/mosh/4.Buliding a Form.md
+              - Connecting to the Backend: code/react/mosh/5.Fetching data.md
+              - Building a Video Game Discovery App:
+                  - Getting Started: code/react/mosh/project/Getting Started.md
+          - The Ultimate React Course 2024 React, Redux & More:
+              - code/react/jonas/note.md
       - Python:
           - code/python/gitea-dl.md
   - 效率:
@@ -114,6 +116,8 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator:
         !!python/name:material.extensions.emoji.to_svg # 突出显示代码块和内联代码块的语法
+
+
   - pymdownx.highlight:
       auto_title: false # 显示代码名称
       linenums: true # 添加代码块行号
@@ -124,8 +128,9 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format:
-            !!python/name:pymdownx.superfences.fence_code_format
-  # 呈现键盘键和组合键 用法：https://squidfunk.github.io/mkdocs-material/reference/formatting/#adding-keyboard-keys
+            !!python/name:pymdownx.superfences.fence_code_format # 呈现键盘键和组合键 用法：https://squidfunk.github.io/mkdocs-material/reference/formatting/#adding-keyboard-keys
+
+
   - pymdownx.keys
   # 页面内部 tab
   - pymdownx.tabbed:

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "code/react/mosh/5.Fetching data.md",
+                "file": "code/react/mosh/project/Getting Started.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "code/react/mosh/5.Fetching data.md",
+                "file": "code/react/mosh/project/Getting Started.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "code/react/mosh/5.Fetching data.md",
+                "file": "code/react/mosh/project/Getting Started.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "code/react/mosh/5.Fetching data.md"
+                "file": "code/react/mosh/project/Getting Started.md"
               }
             }
           },
@@ -138,7 +138,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -155,18 +155,20 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "77b4d2a702572ee3",
+  "active": "bb3d659683642671",
   "lastOpenFiles": [
+    "code/react/mosh/1.Building Components.md",
+    "code/react/mosh/project/Getting Started.md",
+    "code/react/mosh/5.Fetching data.md",
+    "code/react/mosh/project",
     "code/react/mosh/3.Managing Component State.md",
     "code/react/mosh/4.Buliding a Form.md",
-    "code/react/mosh/5.Fetching data.md",
     "index.md",
     "about.md",
     "code/index.md",
     "code/python/gitea-dl.md",
     "code/front-end/HTML+CSS/gmall.md",
     "code/front-end/HTML+CSS/index.md",
-    "code/react/mosh/1.Building Components.md",
     "code/react/mosh/2.Styling Components.md",
     "code/react/mosh/3-Managing Component State.md",
     "code/react/mosh/1-Building Components.md",
@@ -197,7 +199,6 @@
     "code/react/React/5. Fetching data.md",
     "code/react/React/4-Buliding a Form.md",
     "code/react/React/3-Managing Component State.md",
-    "code/react/React/2-Styling Components.md",
     "code/react/React"
   ]
 }
