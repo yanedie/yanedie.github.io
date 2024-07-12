@@ -20,7 +20,12 @@ nav:
               - Buliding a Form: code/react/mosh/4.Buliding a Form.md
               - Connecting to the Backend: code/react/mosh/5.Fetching data.md
               - Building a Video Game Discovery App:
-                  - Getting Started: code/react/mosh/project/Getting Started.md
+                  - Installation: code/react/mosh/project/1.Installation.md
+                  - Responsive Layout: code/react/mosh/project/2.Responsive Layout.md
+                  - Navigation Bar: code/react/mosh/project/3.Navigation Bar.md
+                  - Color Mode: code/react/mosh/project/4.Color Mode.md
+                  - Custom Hooks: code/react/mosh/project/5.Custom Hooks.md
+                  - Game Card: code/react/mosh/project/6.Game Card.md
           - The Ultimate React Course 2024 React, Redux & More:
               - code/react/jonas/note.md
       - Python:

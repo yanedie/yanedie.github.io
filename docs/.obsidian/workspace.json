@@ -11,12 +11,8 @@
             "id": "bb3d659683642671",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "code/react/mosh/project/Getting Started.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "code/react/mosh/project/Getting Started.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "code/react/mosh/project/Getting Started.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "code/react/mosh/project/Getting Started.md"
-              }
+              "state": {}
             }
           },
           {
@@ -157,12 +149,25 @@
   },
   "active": "bb3d659683642671",
   "lastOpenFiles": [
-    "code/react/mosh/1.Building Components.md",
+    "code/react/mosh/project/6.Game Card.md",
+    "code/react/mosh/project/5.Custom Hooks.md",
+    "code/react/mosh/project/4.Color Mode.md",
+    "code/react/mosh/project/3.Navigation Bar.md",
+    "code/react/mosh/project/2.Responsive Layout.md",
+    "code/react/mosh/project/1.Installation.md",
     "code/react/mosh/project/Getting Started.md",
+    "code/react/mosh/project/getting started.md",
+    "code/react/mosh/project/6. Game Card.md",
+    "code/react/mosh/project/5. Custom Hooks.md",
+    "code/react/mosh/project/4. Color Mode.md",
+    "code/react/mosh/project/3. Navigation Bar.md",
+    "code/react/mosh/project/2. Responsive Layout.md",
+    "code/react/mosh/project/1. Installation.md",
     "code/react/mosh/5.Fetching data.md",
-    "code/react/mosh/project",
     "code/react/mosh/3.Managing Component State.md",
     "code/react/mosh/4.Buliding a Form.md",
+    "code/react/mosh/1.Building Components.md",
+    "code/react/mosh/project",
     "index.md",
     "about.md",
     "code/index.md",
@@ -171,15 +176,6 @@
     "code/front-end/HTML+CSS/index.md",
     "code/react/mosh/2.Styling Components.md",
     "code/react/mosh/3-Managing Component State.md",
-    "code/react/mosh/1-Building Components.md",
-    "code/react/mosh/5. Fetching data.md",
-    "code/react/mosh/4-Buliding a Form.md",
-    "code/react/mosh/2-Styling Components.md",
-    "code/react/mosh/Styling Components.md",
-    "code/react/mosh/Buliding a Form.md",
-    "code/react/mosh/Fetching data.md",
-    "code/react/mosh/Managing Component State.md",
-    "code/react/mosh/Building Components.md",
     "code/react/mosh/images/Pasted image 20240609155801.png",
     "code/react/mosh/images/Pasted image 20240609155252.png",
     "code/react/mosh/images/Pasted image 20240609154853.png",
@@ -189,16 +185,12 @@
     "code/react/mosh/images/Pasted image 20240609011944.png",
     "code/react/mosh/images/Pasted image 20240609011302.png",
     "code/react/mosh/images",
-    "code/react/jonas/note.md",
     "code/react/mosh",
     "code/react/新建文件夹",
     "code/react/jonas",
     "code/react/React/images/Pasted image 20240609155801.png",
     "code/react/React/images/Pasted image 20240609154853.png",
     "code/react/React/images",
-    "code/react/React/5. Fetching data.md",
-    "code/react/React/4-Buliding a Form.md",
-    "code/react/React/3-Managing Component State.md",
     "code/react/React"
   ]
 }

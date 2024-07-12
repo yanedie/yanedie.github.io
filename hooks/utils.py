@@ -45,13 +45,12 @@ def on_page_markdown(markdown, page, config, files):
             created_time_str = page.meta['created']
             created_dt = datetime.strptime(created_time_str, "%Y-%m-%dT%H:%M")
             created_time = created_dt.strftime("%Y-%m-%d %H:%M")
-            creation_note = f':material-clock-plus-outline:{{title="创建时间"}} <span style="font-size:.68rem;color:var(--md-default-fg-color--light)">{created_time}<span>'
-            markdown = f'{markdown}\n\n{creation_note}'
+            creation_note = f':material-clock-plus-outline:{{title="创建时间"}} {created_time}'
         if 'updated' in page.meta:
             time_str = page.meta['updated']
             dt = datetime.strptime(time_str, "%Y-%m-%dT%H:%M")
             last_updated_time = dt.strftime("%Y-%m-%d %H:%M")
-            revision_note = f':material-clock-edit-outline:{{title="最后更新"}} <span style="font-size:.68rem;color:var(--md-default-fg-color--light)">{last_updated_time}<span>'
-            markdown = f'{markdown}\r{revision_note}'
+            revision_note = f':material-clock-edit-outline:{{title="最后更新"}} {last_updated_time}'
+            markdown = f'{markdown}\n\n<span style="font-size:.68rem">{creation_note} {revision_note}'
         return markdown
 
