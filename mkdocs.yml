@@ -3,56 +3,22 @@ repo_name: anotherblog
 repo_url: https://github.com/yanedie/anotherblog
 copyright: Copyright &copy; 2024 Yanedie
 
-nav:
-  - 首页:
-      - index.md
-  - 博客:
-      - blog/index.md
-  - 开发:
-      - code/index.md
-      - Mkdocs 插件:
-          - Mkdocs-Macros: code/mkdocs-plugins/mkdocs-macros/mkdocs-macros.md
-      - React:
-          - React 18 for Beginners:
-              - Building Components: code/react/mosh/1.Building Components.md
-              - Styling Components: code/react/mosh/2.Styling Components.md
-              - Managing Component State: code/react/mosh/3.Managing Component State.md
-              - Buliding a Form: code/react/mosh/4.Buliding a Form.md
-              - Connecting to the Backend: code/react/mosh/5.Fetching data.md
-              - Building a Video Game Discovery App:
-                  - Installation: code/react/mosh/project/1.Installation.md
-                  - Responsive Layout: code/react/mosh/project/2.Responsive Layout.md
-                  - Navigation Bar: code/react/mosh/project/3.Navigation Bar.md
-                  - Color Mode: code/react/mosh/project/4.Color Mode.md
-                  - Custom Hooks: code/react/mosh/project/5.Custom Hooks.md
-                  - Game Card: code/react/mosh/project/6.Game Card.md
-          - The Ultimate React Course 2024 React, Redux & More:
-              - code/react/jonas/note.md
-      - Python:
-          - code/python/gitea-dl.md
-  - 效率:
-      - workflow/index.md
-      - 建站:
-          - 添加评论: workflow/config/comment.md
-          - 自动构建: workflow/config/auto-build.md
-  - 技术传播:
-      - tech-comm/index.md
-      - 公司列表: tech-comm/employer-in-tc.md
-      - 风格检查: tech-comm/Vale-linter-vs-code.md
-  - 标签: tags.md
-  - 关于: about.md
+use_directory_urls: false
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/photo.css
 extra_javascript:
+  - javascripts/photo.js
   - javascripts/tablesort.js
   - javascripts/open-in-new-tab.js
   - javascripts/jquery.dataTables.min.js
-# exclude-search:
-# 	- tags.md
 
 plugins:
   - search
+  - literate-nav:
+      nav_file: nav.md
+  - callouts
   # - statistics
   - blog:
       blog_toc: true
@@ -67,30 +33,48 @@ hooks:
   - hooks/utils.py
   # - my_hooks.py
 
+exclude_docs: |
+  assets/templates/post.md
+
+watch:
+  - hooks
+
 theme:
   language: zh
   name: material
   palette:
-    primary: custom
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: red
+      toggle:
+        icon: material/brightness-7
+        name: 切换至夜间模式
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      toggle:
+        icon: material/brightness-4
+        name: 切换至日间模式
   custom_dir: overrides
   logo: assets/logo.svg
   favicon: assets/logo.svg
   features:
     - content.code.copy
     - content.tooltips
+    - navigation.top
+    - navigation.tabs
+    # - navigation.expand
+    - navigation.indexes
     - navigation.instant
     - navigation.tracking
-    - navigation.tabs
-    # - navigation.tabs.sticky
-    - navigation.expand
-    - navigation.top
-    # 左侧导航栏收缩
-    - navigation.indexes
-    # 页面底部导航
+    - navigation.sections
     - navigation.footer
     - toc.follow
 
 markdown_extensions:
+  - nl2br
   # 安全说明 用法：https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage
   - admonition
   # 向几乎每个 Markdown 内联和块级元素添加 HTML 属性和 CSS 类

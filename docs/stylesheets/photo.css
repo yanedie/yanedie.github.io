@@ -1,0 +1,21 @@
+#container {
+  position: relative;
+}
+.box {
+  float: left;
+  padding: 5px;
+}
+.box-img {
+  width: 150px;
+  padding: 5px;
+}
+img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+#container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
