@@ -11,8 +11,12 @@
             "id": "dd4a3c35903cfe35",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "code/mkdocs hooks.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "code/mkdocs hooks.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "code/mkdocs hooks.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "code/mkdocs hooks.md"
+              }
             }
           },
           {
@@ -149,6 +157,10 @@
   },
   "active": "dd4a3c35903cfe35",
   "lastOpenFiles": [
+    "workflow/我如何零基础转行成为一个自信的前端.md",
+    "workflow/十分钟教会你申请软著（2023年6月线上申请版本）.md",
+    "blog/posts/我如何零基础转行成为一个自信的前端.md",
+    "blog/posts/2024-07-21.md",
     "code/react/mosh/project/14. Displaying the Genres.md",
     "code/react/mosh/project/10. Loading Skeleton.md",
     "code/react/mosh/project/11. Removing Duplicated Styles (Refactor).md",
@@ -158,8 +170,6 @@
     "code/react/mosh/5.Fetching data.md",
     "code/react/mosh/project/07. Displaying Platform Icons.md",
     "blog/posts/gallery.md",
-    "blog/posts/2024-07-21.md",
-    "blog/posts/我如何零基础转行成为一个自信的前端.md",
     "blog/posts/十分钟教会你申请软著（2023年6月线上申请版本）.md",
     "assets/templates/post.md",
     "2024-07-22.md",
@@ -175,9 +185,7 @@
     "nav.md",
     "tags.md",
     "未命名.md",
-    "workflow/index.md",
     "assets/templates",
-    "assets/template.md",
     "assets/memory/IMG_2463.JPG",
     "assets/memory/IMG_2462.JPG",
     "assets/memory/IMG_2453.JPG",

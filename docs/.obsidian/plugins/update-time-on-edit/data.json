@@ -31,11 +31,9 @@
     "code/front-end/Vue.js/note.md": "dccac33bdcdfdd321ae0add2b517870566aa455a2fd7c6d58e7f9cd43ae5f783",
     "code/front-end/HTML+CSS/index.md": "6d3e10c333d1f8c250f61232b48e126e496f499309597f09ebdb4b64c7895294",
     "code/front-end/HTML+CSS/gmall.md": "b5af3cfc4370ab0aad8e68179be7cef1216afdf5b4d85c8a93fbf14f136ac0d5",
-    "blog/posts/我如何零基础转行成为一个自信的前端.md": "d54dba324d71fe18087a36ed707c0909adcbd20dc0a1aeadd704c36704d6818f",
-    "blog/posts/十分钟教会你申请软著（2023年6月线上申请版本）.md": "7f4973071c73746bc2a904d8b8b623c9530a8e82204d1b60df592c055cac6631",
     "blog/index.md": "ec22cb6d43c4857d75d628189a906aa28bd52f2c8c904f53ba56c28620b48b70",
     "about.md": "255f151332734fb90e2f53410cfd7f7310682c42029a0f51c4c22bbaccb88f8b",
-    "nav.md": "5584e5a38df0dd11a587ea6d460edc1b6a47997a38c062e05e7a52a452f7c0ea",
+    "nav.md": "764d0c7332f5baf31a4b7905d1ab93b4bbd727ddfa3973881435b0b1835596c2",
     "code/react/mosh/project/10. Loading Skeleton.md": "78a3fa705ca466651e8677db6db3027201054d5f5f32a917770973fa98d4e559",
     "code/react/mosh/project/09. Getting Optimized Images.md": "4e70ae826e175c8798fcb9a1fce2854bec74539194a10e5ec4c895e977580c5e",
     "code/react/mosh/project/08. Displaying Critic Score.md": "09462056f131716a141932283da067aae63e118a6e8771dbe7a3e7e666657591",
@@ -51,6 +49,8 @@
     "code/react/mosh/project/11. Removing Duplicated Styles (Refactor).md": "18dae42724e19b2b91b5ba4686c21fed58b1a95a552aa1c6784e053f80e0eb89",
     "code/react/mosh/project/12. Fetching the Genres.md": "d2c0f5f4b2a336abc26fff0875c788cefeb3c0584e1dc7c6e849feccd31a5e32",
     "code/react/mosh/project/13. Creating a Generic Data Fetching Hook.md": "e5750564c445c14d66dae7f2da0e8c37a3c5b4d482ea77991661d2c7418ef070",
-    "code/react/mosh/project/14. Displaying the Genres.md": "753bdb1406eb03e104e12d07c73e168a24866afd3d0afd5f2380b2c63b963272"
+    "code/react/mosh/project/14. Displaying the Genres.md": "753bdb1406eb03e104e12d07c73e168a24866afd3d0afd5f2380b2c63b963272",
+    "code/mkdocs hooks.md": "e64a024553ac3bc5f71213c4dd5f1a9e9159045a48930e0f4b66ecc716c9c324",
+    "workflow/我如何零基础转行成为一个自信的前端.md": "9b5c698b5f555c62fec9c0336f64928515403dc5dd1b243a8dd6ee98150187b6"
   }
 }

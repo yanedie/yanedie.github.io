@@ -1,6 +1,6 @@
 ---
 created: 2024-07-20T20:56
-updated: 2024-07-22T01:26
+updated: 2024-07-25T01:54
 ---
 * [首页](index.md)
 * [随笔](blog/index.md)
@@ -25,6 +25,8 @@ updated: 2024-07-22T01:26
     * 建站
         * [添加评论](workflow/config/comment.md)
         * [自动构建](workflow/config/auto-build.md)
+    * 收藏
+        * workflow/*.md
 * [技术传播](tech-comm/index.md)
     * [公司列表](tech-comm/employer-in-tc.md)
     * [风格检查](tech-comm/Vale-linter-vs-code.md)
