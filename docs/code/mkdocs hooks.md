@@ -1,6 +1,6 @@
 ---
 created: 2024-07-23T13:59
-updated: 2024-07-25T01:47
+updated: 2024-07-29T01:02
 ---
 # 什么是 Hooks
 
@@ -8,20 +8,20 @@ updated: 2024-07-25T01:47
 
 在这个场景中，你可以在“按门铃"这个事件上添加 hooks。这些 hooks 会在门铃被按下时触发，执行发送通知和拍照的操作，而不需要改变门铃原有的发声功能。
 
-hooks 就像是程序中预先设置的"挂钩"。它们允许我们在不修改原有代码的情况下，在特定的时机插入（挂上）新的功能或行为。这种机制使得程序更加灵活，易于扩展和定制。
+好比网页上有个按钮，按钮都可以点击（原本的功能没变），但是有的按钮点击后会提交信息，有的按钮点击后会清空信息（添加了新功能）。
 
-## 使用 Hooks 的优势
+点击事件之所以有不同的响应，是因为我们分配一个在点击事件发生时运行的函数，这些函数就是 hooks 函数，允许我们在不修改原有代码的情况下，在特定的时机插入新的功能或行为。这种机制使得程序更加灵活，易于扩展和定制。
 
-- **灵活性**：允许在不修改 MkDocs 核心代码的情况下自定义文档生成过程
-- **可扩展性**：易于添加新功能或集成第三方工具
-- **非侵入性**：不会影响 MkDocs 的核心功能，可以随时启用或禁用
-## Mkdocs 中的 Hooks
+## MkDocs 中的 Hooks 函数
 
-MkDocs 中的 Hooks 允许我们在文档生成过程的不同阶段（事件）插入自定义代码，以修改或增强默认行为。这些 Hooks 类似于刚刚谈到的一般 Hooks 概念，但专门应用于 MkDocs 的文档生成流程。
+MkDocs 中的 Hooks 函数允许我们在文档网站构建过程的不同阶段（事件）运行自定义代码，来实现特定的需求。
 
-### Hooks 的类型
+这些 Hooks 类似于刚刚谈到的一般 Hooks 概念，但专门应用于 MkDocs 的文档生成流程。我们可以自定义文档生成过程，添加新功能或集成第三方工具。
+### 事件类型
 
-MkDocs 的 Hooks 能够在不同的事件发生时运行，包括[全局事件](https://www.mkdocs.org/dev-guide/plugins/#global-events)、[页面事件](https://www.mkdocs.org/dev-guide/plugins/#page-events)和[模板事件](https://www.mkdocs.org/dev-guide/plugins/#template-events)，Hooks 脚本内可以包含这些事件，有的在页面生成前运行，有的在生成后运行，还有的在整个网站构建完成后运行。你可以根据需要选择合适的事件进行触发，以下是几种比较常见的事件：
+MkDocs 的 Hooks 函数会在不同的事件发生时执行，这些事件包括[全局事件](https://www.mkdocs.org/dev-guide/plugins/#global-events)、[页面事件](https://www.mkdocs.org/dev-guide/plugins/#page-events)和[模板事件](https://www.mkdocs.org/dev-guide/plugins/#template-events)。事件也有发生的顺序，有的在页面生成前运行，有的在生成后运行，还有的在整个网站构建完成后运行。
+
+以下是几种比较常见的事件，你可以根据需要选择合适的事件：
 
 1. **on_pre_build**: 在构建过程开始之前触发
 2. **on_config**: 用于修改配置文件的内容
@@ -31,42 +31,49 @@ MkDocs 的 Hooks 能够在不同的事件发生时运行，包括[全局事件](
 6. **on_page_content**: 在 Markdown 转换为 HTML 后触发，允许修改 HTML
 7. **on_post_build**: 在构建过程完成后触发
 
-这里不一一列举，具体可以先看[官网对 Hook 的介绍](https://www.mkdocs.org/user-guide/configuration/#hooks)，再看[所有的事件](https://www.mkdocs.org/dev-guide/plugins/#events) 。
+比如我们想要去除网页上的动图，那么有两个事件可以选择，一个是 `on_page_markdown`，另一个是 `on_page_content`。
 
-## 如何使用 Hooks？
+注意：以上操作不会修改本地文件，只是修改了程序读取时的内容。
 
-在配置文件中添加，其中 `my_hooks` 为 hooks 脚本的名称，可以添加多个脚本以模块化：
+这里不一一列举，具体可以先看[官网对 Hook 的介绍](https://www.mkdocs.org/user-guide/configuration/#hooks)，再看[所有的事件](https://www.mkdocs.org/dev-guide/plugins/#events) ，对事件的作用、需要的参数、参数对象的属性和方法、返回值都有说明。
+
+## 用法
+
+在配置文件中添加，其中 `my_hooks` 为 Python 脚本的名称，与配置文件同一目录，可以分别添加多个脚本便于区分和维护：
 
 ```yaml
 hooks:
 	- my_hooks.py
+	- update_config.py
+	- remove_gif.py
+	...
 ```
 
-然后 `my_hooks.py` 文件可以包含不止一个事件，例如：
+这是一个简单案例，该案例在 MkDocs 读取 Markdown 时触发，替换 markdown 文本：
 
 ```python title="my_hooks.py"
 def on_page_markdown(markdown, page, config, files)
     return markdown.replace('shining', 'SHINING')
 ```
 
-该脚本将获取到的 Markdown 文本中所有 shining 替换为 SHINING。
+比如 admonition，我们可以在 Markdown 文件写成通用的格式：
+```
+> 说明：说明的内容
+```
 
+再利用 hooks 函数在 Markdown 转换为 HTML 前对"说明："进行预处理，免去转换格式或导入到其它软件语法不识别的问题。
 
-- `on_config` Hook 添加支持的语言列表到配置中。
-- `on_files` Hook 为每种语言创建新的Markdown文件。
-- `on_page_markdown` Hook 使用翻译API翻译页面内容。
-- `on_nav` Hook 为每种语言创建单独的导航部分。
+我们也可以在一个 Python 文件内包含多个事件共同配合，以离线版网站为例：
 
-hooks 由于不位于 docs 文件夹内，修改后 MkDocs 不会热重载，但是我们可以把钩子脚本放在一个名为 hooks 的文件夹内，并在配置文件中监听该文件夹，从而实现修改钩子脚本后重新加载。
+- `on_config` 修改 `use_directory_urls` 的值和 LOGO 等文件路径'。 
+- `on_page_markdown` 利用正则匹配图片链接，下载至 common 文件夹，同时替换图片链接为相对路径。
+
+此外，由于脚本由于不位于 docs 文件夹内，修改后 MkDocs 不会热重载，但是我们可以把脚本放在一个名为 hooks 的文件夹内，并在配置文件中监听该文件夹变动，从而实现修改脚本后重新加载。
 
 ```yaml
 watch:
   - hooks
 ```
-
-**MkDocs 1.6 中的新功能。**
-如果一个 hooks 文件旁边有一个`foo.py`文件，它可以使用普通的 Python 语法`import foo`来访问其函数。
-在旧版本的 MkDocs 中，需要一个变通的方法：将路径添加到 `sys.path` 中。
 
 附：
 
