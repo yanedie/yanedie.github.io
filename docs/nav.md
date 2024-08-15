@@ -8,6 +8,10 @@ updated: 2024-07-25T01:54
 * [开发](code/index.md)
     * Mkdocs 插件
         * [Mkdocs-Macros](code/mkdocs-plugins/mkdocs-macros/mkdocs-macros.md)
+    * JavaScript
+        * [Javascript 基础笔记](code/javascript/JavaScript基础笔记.md)
+        * [Javascript 进阶笔记](code/javascript/JavaScript进阶笔记.md)
+        * [Web API](code/javascript/Web API.md)
     * React
         * React 18 for Beginners
             * [Building Components](code/react/mosh/1.Building Components.md)

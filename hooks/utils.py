@@ -48,7 +48,8 @@ def on_page_markdown(markdown, page, config, files):
         return f'{before_fold}{after_fold}'
 
     # 查找并删除代码块第一行的 fold 和一个空格
-    markdown = autocorrect.format(re.sub(r'(```\w+) fold(.*)', remove_fold, markdown))
+    if page.file.src_uri != "nav.md":
+        markdown = autocorrect.format(re.sub(r'(```\w+) fold(.*)', remove_fold, markdown))
 
     # 文章底部添加最后更新时间
     if re.search(r'blog/index.html|tags/index.html', page.url):
