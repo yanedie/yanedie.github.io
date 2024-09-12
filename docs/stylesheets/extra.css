@@ -28,3 +28,8 @@
 .md-sidebar__scrollwrap {
   scrollbar-width: none !important;
 }
+
+:root, [data-md-color-primary=white] {
+  --md-code-hl-color:#f2f28d !important;
+  --md-code-hl-color--light: #f2f28d !important;
+}

@@ -48,9 +48,18 @@
     "assets/templates/post.md": "76bc6b1f27066f0aa08c63f5a5173a05184bd6b5ce9819d967e414e367a4751b",
     "code/react/mosh/project/11. Removing Duplicated Styles (Refactor).md": "18dae42724e19b2b91b5ba4686c21fed58b1a95a552aa1c6784e053f80e0eb89",
     "code/react/mosh/project/12. Fetching the Genres.md": "d2c0f5f4b2a336abc26fff0875c788cefeb3c0584e1dc7c6e849feccd31a5e32",
-    "code/react/mosh/project/13. Creating a Generic Data Fetching Hook.md": "e5750564c445c14d66dae7f2da0e8c37a3c5b4d482ea77991661d2c7418ef070",
-    "code/react/mosh/project/14. Displaying the Genres.md": "53f926e4846bacd9e2b2e55b4cb1ca3cca37b863373bf4876789a754bafaa920",
-    "code/mkdocs hooks.md": "524e8ce7a7e4c607b8fd72aa0534c36c345f5a231a3ffc98ddcd97a0548ed352",
-    "workflow/我如何零基础转行成为一个自信的前端.md": "9b5c698b5f555c62fec9c0336f64928515403dc5dd1b243a8dd6ee98150187b6"
+    "code/react/mosh/project/13. Creating a Generic Data Fetching Hook.md": "1c7cccceffa2b6c11e5ca0d918007461a060056b20259adcad42e06e84364c1a",
+    "code/react/mosh/project/14. Displaying the Genres.md": "be940125666e4e815240c6769d199ed86d9a40e12f9f45fb519f336ae04bedb0",
+    "code/mkdocs hooks.md": "ab6aebd2ef7da86b21ccf2f01e7eaf6189a818e9aee4b9dc3ab7862e59d5878d",
+    "workflow/我如何零基础转行成为一个自信的前端.md": "9b5c698b5f555c62fec9c0336f64928515403dc5dd1b243a8dd6ee98150187b6",
+    "code/react/mosh/project/15. Filtering Games.md": "6ddb4b59e972f322fd78ce9a044024893d6f7578ad096113f4f44c58b24d006a",
+    "code/react/mosh/project/16. Refactoring - Extracting a Query Object.md": "cdb4ce08859f339bf699bac111f26ea33ca9a61e66d094759545d39e06075fc6",
+    "code/react/mosh/project/17. Building Sort Selector.md": "fe58f24653366843977e88b928845b350f94bf148f1c958b0f5308bea88279c4",
+    "code/react/mosh/project/18. Building Search Input.md": "914589b74add43dfbb497132cf8478f54163a065decf881c6256702742c0bdd2",
+    "code/react/mosh/project/19. Game Heading.md": "e332d5a143c88bd6798c05966e353159c66dc2177651ac45412f0558da1cb86c",
+    "code/react/mosh/project/20. Cleaning up.md": "34914c439898588ce1562944b7cb69646a7b12672e5629cf4e7746b965555b19",
+    "code/react/mosh/project/21. Adding Emojis & Shipping Static Data.md": "b8586fcb71982f77ba81ee858de3f5bb1e20b95cdcf59511fc7a7a0e5c07a8f5",
+    "code/react/mosh/project/22. Customizing the Chakra Theme.md": "f067f2931d17cb7cc24cd594906aa8279b3987d879d303e3c341023c9bc09941",
+    "code/react/mosh/project/23. Refactoring Game Grid.md": "73b3014173c5e227c1c9f593719b5d478590cbaabe4b8d90735f9673c7d5bb84"
   }
 }
