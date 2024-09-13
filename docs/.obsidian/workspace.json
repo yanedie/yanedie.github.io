@@ -13,9 +13,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "code/react/mosh/project/14. Displaying the Genres.md",
-                "mode": "source",
-                "source": false
+                "file": "code/react/mosh/project/22. Customizing the Chakra Theme.md",
+                "mode": "preview",
+                "source": true
               }
             }
           }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Pasted image 20240816235731",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "code/react/mosh/project/14. Displaying the Genres.md",
+                "file": "code/react/mosh/project/22. Customizing the Chakra Theme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "code/react/mosh/project/14. Displaying the Genres.md",
+                "file": "code/react/mosh/project/22. Customizing the Chakra Theme.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "code/react/mosh/project/14. Displaying the Genres.md"
+                "file": "code/react/mosh/project/22. Customizing the Chakra Theme.md"
               }
             }
           },
@@ -158,17 +157,17 @@
   },
   "active": "681fbf720dd79057",
   "lastOpenFiles": [
-    "code/react/mosh/project/Pasted image 20240816235731.png",
-    "code/react/mosh/project/14. Displaying the Genres.md",
+    "code/react/mosh/project/21. Adding Emojis & Shipping Static Data.md",
+    "code/react/mosh/project/22. Customizing the Chakra Theme.md",
+    "code/react/mosh/project/23. Refactoring Game Grid.md",
     "code/react/mosh/project/Pasted image 20240817002418.png",
+    "code/react/mosh/project/14. Displaying the Genres.md",
+    "code/react/mosh/project/Pasted image 20240816235731.png",
     "code/react/mosh/project/Pasted image 20240817001104.png",
     "code/react/mosh/project/Pasted image 20240817003150.png",
     "code/mkdocs hooks.md",
     "Pasted image 20240816235731.png",
     "Pasted image 20240817001104.png",
-    "code/react/mosh/project/23. Refactoring Game Grid.md",
-    "code/react/mosh/project/22. Customizing the Chakra Theme.md",
-    "code/react/mosh/project/21. Adding Emojis & Shipping Static Data.md",
     "code/react/mosh/1.Building Components.md",
     "code/react/mosh/project/20. Cleaning up.md",
     "code/react/mosh/project/19. Game Heading.md",
