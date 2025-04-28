@@ -1,0 +1,35 @@
+@font-face {
+  font-family: Moderat-Regular-Web;
+  src: url(./Moderat-Regular.woff);
+}
+
+@font-face {
+  font-family: Moderat-Regular-Web;
+  src: url(./Moderat-Bold.woff);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Moderat-Regular-Web;
+  src: url(./Moderat-Regular-Italic.woff);
+  font-style: italic;
+}
+
+.md-tabs {
+  border-bottom: none !important;
+}
+
+.md-header--shadow {
+  box-shadow: none !important;
+  border-bottom: 0.05rem solid #00000012;
+  transition: transform 0.25s cubic-bezier(0.1, 0.7, 0.1, 1), box-shadow 0.25s;
+}
+
+.md-sidebar__scrollwrap {
+  scrollbar-width: none !important;
+}
+
+:root, [data-md-color-primary=white] {
+  --md-code-hl-color:#f2f28d !important;
+  --md-code-hl-color--light: #f2f28d !important;
+}

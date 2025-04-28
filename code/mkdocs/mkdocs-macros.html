@@ -1,0 +1,4974 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="comment.html">
+      
+      
+        <link rel="next" href="../python/career-fair.html">
+      
+      
+      <link rel="icon" href="../../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>MKDocs-Macros 插件 - Yanedie | Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet"/><style>.fancybox__caption { font-size: 0.7rem; }[data-fancybox] { cursor: pointer; }[data-md-color-scheme=default] figure[fancybox-only-dark] { display: none; }[data-md-color-scheme=slate] figure[fancybox-only-light] { display: none; }</style> <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/l10n/zh_CN.umd.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mkdocs-macros" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../index.html" title="Yanedie | Notebook" class="md-header__button md-logo" aria-label="Yanedie | Notebook" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Yanedie | Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MKDocs-Macros 插件
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yanedie/yanedie.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yanedie.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../blog/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  随笔
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  编程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="comment.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  爱折腾
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tech-comm/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  文档开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../clippings/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  收藏
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../tags.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  标签
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="Yanedie | Notebook" class="md-nav__button md-logo" aria-label="Yanedie | Notebook" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    Yanedie | Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yanedie/yanedie.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yanedie.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../blog/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    随笔
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            随笔
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    归档
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            归档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/archive/2024.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2024
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    编程
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            编程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    HTML&CSS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            HTML&CSS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html&css/html.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html&css/gmall.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTML+CSS 大作业：尚品汇
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    JavaScript
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../javascript/javascript-from-zero-to-hero/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 从入门到精通
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3_1" id="__nav_3_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript 从入门到精通
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/javascript-基础---第-1-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 基础 - 第 1 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/javascript-基础---第-2-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 基础 - 第 2 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/javascript-基础---第-3-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 基础 - 第 3 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/javascript-基础---第-4-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 基础 - 第 4 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/javascript-基础---第-5-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 基础 - 第 5 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/javascript-进阶---第-1-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 进阶 - 第 1 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/javascript-进阶---第-2-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 进阶 - 第 2 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/javascript-进阶---第-3-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 进阶 - 第 3 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/javascript-进阶---第-4-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 进阶 - 第 4 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/web-apis---第-1-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web APIs - 第 1 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/web-apis---第-2-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web APIs - 第 2 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/web-apis---第-3-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web APIs - 第 3 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/web-apis---第-4-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web APIs - 第 4 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/web-apis---第-5-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web APIs - 第 5 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/javascript-from-zero-to-hero/web-apis---第-6-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web APIs - 第 6 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../javascript/the-complete-javascript-course/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    The Complete Javascript Course 2024: From Zero to Expert!
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            The Complete Javascript Course 2024: From Zero to Expert!
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2" id="__nav_3_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    All Coding Challenges
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            All Coding Challenges
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_1" id="__nav_3_3_2_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    javascript-fundamentals-part-1
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            javascript-fundamentals-part-1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-1/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-1/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-1/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-1/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_2" id="__nav_3_3_2_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    javascript-fundamentals-part-2
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            javascript-fundamentals-part-2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-2/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-2/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-2/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-2/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_3" id="__nav_3_3_2_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    developer-skills-editor-setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            developer-skills-editor-setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/developer-skills-editor-setup/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_4" id="__nav_3_3_2_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    javascript-in-the-browser-dom-and-events
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            javascript-in-the-browser-dom-and-events
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/javascript-in-the-browser-dom-and-events/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_5" id="__nav_3_3_2_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    data-structures-modern-operators-strings
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            data-structures-modern-operators-strings
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/data-structures-modern-operators-strings/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/data-structures-modern-operators-strings/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/data-structures-modern-operators-strings/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/data-structures-modern-operators-strings/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_6" id="__nav_3_3_2_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    a-closer-look-at-functions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            a-closer-look-at-functions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/a-closer-look-at-functions/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/a-closer-look-at-functions/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_7" id="__nav_3_3_2_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    working-with-arrays
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            working-with-arrays
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/working-with-arrays/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/working-with-arrays/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/working-with-arrays/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/working-with-arrays/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_8" id="__nav_3_3_2_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    object-oriented-programming-oop
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            object-oriented-programming-oop
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/object-oriented-programming-oop/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/object-oriented-programming-oop/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/object-oriented-programming-oop/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/object-oriented-programming-oop/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_9" id="__nav_3_3_2_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    asynchronous-javascript
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            asynchronous-javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/asynchronous-javascript/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/asynchronous-javascript/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/the-complete-javascript-course/coding-challenges/asynchronous-javascript/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    React
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            React
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_1" id="__nav_3_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    React 18 for Beginners
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            React 18 for Beginners
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/building-components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/styling-components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Styling Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/managing-component-state.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managing Component State
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/buliding-a-form.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Buliding a Form
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/fetching-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connecting to the Backend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_1_6" id="__nav_3_4_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Building a Video Game Discovery App
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_4_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Building a Video Game Discovery App
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01. Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-responsive-layout.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02. Responsive Layout
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-navigation-bar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03. Navigation Bar
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-color-mode.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04. Color Mode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-custom-hooks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05. Custom Hooks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-game-card.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06. Game Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-displaying-platform-icons.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07. Displaying Platform Icons
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-displaying-critic-score.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08. Displaying Critic Score
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-getting-optimized-images.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09. Getting Optimized Images
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-loading-skeleton.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10. Loading Skeleton
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-removing-duplicated-styles-refactor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11. Removing Duplicated Styles (Refactor)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-fetching-the-genres.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12. Fetching the Genres
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-creating-a-generic-data-fetching-hook.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13. Creating a Generic Data Fetching Hook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-displaying-the-genres.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14. Displaying the Genres
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-filtering-games.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15. Filtering Games
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-refactoring---extracting-a-query-object.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16. Refactoring   Extracting a Query Object
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-building-sort-selector.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17. Building Sort Selector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-building-search-input.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    18. Building Search Input
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-game-heading.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    19. Game Heading
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-cleaning-up.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    20. Cleaning up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-adding-emojis-&-shipping-static-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    21. Adding Emojis & Shipping Static Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-customizing-the-chakra-theme.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    22. Customizing the Chakra Theme
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/mosh/project/-refactoring-game-grid.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    23. Refactoring Game Grid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    The Ultimate React Course 2024 React, Redux & More
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            The Ultimate React Course 2024 React, Redux & More
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react/jonas/note.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Note
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    爱折腾
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            爱折腾
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    MKDocs 相关
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            MKDocs 相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="comment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MKDocs 添加评论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    MKDocs-Macros 插件
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="mkdocs-macros.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    MKDocs-Macros 插件
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      介绍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      变量（Variables）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      宏（Macros）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      过滤器（Filters）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      模块（Modules）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模块（Modules）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      注册变量、宏和过滤器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    <span class="md-ellipsis">
+      env 对象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      访问配置文件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="控制结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      循环
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/career-fair.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    宣讲会
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/error-code.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    错误码
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/gitea-dl.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    下载 Gitea 仓库分支文件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tech-comm/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    文档开发
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            文档开发
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tech-comm/vale-linter-vs-code.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用 Vale 进行英文风格检查
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tech-comm/version.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用查询参数避免旧软件打开新文档
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../clippings/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    收藏
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            收藏
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clippings/understanding-execution-context-and-execution-stack-in-javascript.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Understanding Execution Context and Execution Stack in Javascript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clippings/auto-build.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    自动构建
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clippings/十分钟教会你申请软著（2023年6月线上申请版本）.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    十分钟教会你申请软著（2023年6月线上申请版本）
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clippings/我如何零基础转行成为一个自信的前端.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    我是如何零基础转行成为一个自信的前端
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clippings/执行上下文.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    执行上下文
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tags.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    标签
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关于
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      介绍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      变量（Variables）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      宏（Macros）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      过滤器（Filters）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      模块（Modules）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模块（Modules）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      注册变量、宏和过滤器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    <span class="md-ellipsis">
+      env 对象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      访问配置文件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="控制结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      循环
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="mkdocs-macros">MkDocs-Macros<a class="headerlink" href="#mkdocs-macros" title="Permanent link">#</a></h1>
+<h2 id="_1">介绍<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">说明</p>
+<p>这个插件并非本人开发，只是国内互联网介绍这个插件的很少，这里简单介绍一下。</p>
+<p>简单来说，把 Markdown 变成模板引擎，从而获得一些编程语言的能力，如条件判断、变量、赋值等。</p>
+</div>
+<p><a href="https://mkdocs-macros-plugin.readthedocs.io/en/latest/">Mkdocs-Macros</a> 是一个插件/迷你框架，使 MkDocs 网站的贡献者可以轻松生成更丰富、更漂亮的页面。它可以做两件事：</p>
+<ol>
+<li>将 Markdown 页面转换为 Jinja2 模板：<ol>
+<li>使用环境或自定义变量</li>
+<li>调用预定义或自定义宏（函数，一般定义在 Python 模块中）</li>
+<li>利用标准或自定义过滤器</li>
+</ol>
+</li>
+<li>替换 MkDocs 插件以执行多种任务：例如操作导航、在生成 html 页面后添加文件等。</li>
+</ol>
+<h2 id="variables">变量（Variables）<a class="headerlink" href="#variables" title="Permanent link">#</a></h2>
+<p>变量是一个预定义的值。</p>
+<p>变量可以用五种不同的方式定义：</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph "MkDocs-Macros"
+    variable["在 Markdown 中声明变量\n{{ unit_price }}"] --&gt; renderer
+    renderer(("模板渲染")) --&gt; text
+    text("mkdocs serve 后页面显示为\n10")
+
+    end
+    subgraph "全局变量"
+    config["mkdocs.yml\nextra:\nunit_price: 10"] --&gt; variable
+    external["外部 YAML 文件\nunit_price: 10"]  --&gt; variable
+    module[" Python 模块\n(main.py)\nunit_price = 10"]  --&gt; variable
+    end
+    subgraph "局部变量"
+    header["YAML Front Matter"\nunit_price: 10]  --&gt; variable
+    page["Markdown\n{%set unit_price = 10 %}"]  --&gt; variable
+    end</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>局部变量只能在特定 Markdown 页面内访问。无法从 python 代码访问它们。</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">第一种</label><label for="__tabbed_1_2">第二种</label><label for="__tabbed_1_3">第三种</label><label for="__tabbed_1_4">第四种</label><label for="__tabbed_1_5">第五种</label><label for="__tabbed_1_6">Markdown</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">mkdocs.yml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>extra:
+    price: 12.50
+    company:
+        name: Acme
+        address: ....
+        website: www.acme.com
+</code></pre></div></td></tr></table></div>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p>extra 部分中只能使用文字（字符串或数字）。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">mkdocs.yml</label><label for="__tabbed_3_2">variables.yml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>plugins:
+  - macros:
+      include_yaml:
+        - docs\assets\variables.yml
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>price: 12.50
+company:
+    name: Acme
+    address: ....
+    website: www.acme.com
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">mkdocs.yml</label><label for="__tabbed_4_2">main.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>plugins:
+- macros:
+    module_name: main
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>import XXX
+
+def define_env(env):
+    &quot;&quot;&quot;
+    这是用于定义变量的钩子
+    变量：包含环境变量的字典
+    &quot;&quot;&quot;
+
+    你的 python 代码。。。。。。
+
+    # 添加到 Markdown 页面的变量字典中：
+    env.variables[&#39;price&#39;] = &quot;12.50&quot;
+    ...
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Markdown</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code># 在 Markdown 中使用 set 关键字
+{% set price = &#39;12.50&#39; %}
+{% set ... = &#39;...&#39; %}
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">YAML Front Matter</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>---
+price: 12.50
+company:
+    name: Acme
+    address: ....
+    website: www.acme.com
+---
+</code></pre></div></td></tr></table></div>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p>可以通过两种方式访问​​ YAML FrontMatter 的内容：</p>
+<ol>
+<li>按名称，例如 {{ price }} 和 {{ company.name }}</li>
+<li>或者 {{ page.meta.price }} 和 {{ page.meta.company.name }}</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>The price of the product is {{ price }}.
+
+See [more information on the website]({{ company.website }}).
+
+See &lt;a href=&quot;{{ company.website }}&quot;&gt;more information on the website&lt;/a&gt;.
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<h2 id="macros">宏（Macros）<a class="headerlink" href="#macros" title="Permanent link">#</a></h2>
+<p>宏即 Python 函数。这些函数将在 markdown 页面中的 jinja2 片段中使用。宏应该返回一个字符串，可以是纯文本、markdown 或 HTML。在 Markdown 页面中对宏的每次调用都将被该结果替换。</p>
+<h2 id="filters">过滤器（Filters）<a class="headerlink" href="#filters" title="Permanent link">#</a></h2>
+<p>自定义过滤器是 Jinja2 的概念。它本质上是一个使用不同语法的 Python 函数，例如 <code>{{ 'my text ' | uppercase }}</code>（假设有一个名为 uppercase 的自定义函数并声明为过滤器）。就像宏一样，过滤器应该返回一个字符串，可以是纯文本、Markdown 或 HTML。</p>
+<h2 id="modules">模块（Modules）<a class="headerlink" href="#modules" title="Permanent link">#</a></h2>
+<p>模块是宏、过滤器和变量的库。每个模块必须包含一个 <code>define_env()</code> 函数，其中包含声明。</p>
+<p>默认情况下，Python 代码必须放在主站项目目录中的一个 main.py 文件中 (通常在 mkdocs.yml 文件同级目录)。</p>
+<p>可以通过向 mkdocs.yml 文件添加 module_name 条目来更改该模块的名称（无需添加 .py 后缀）</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>plugins:
+  - macros:
+        module_name: main
+</code></pre></div></td></tr></table></div>
+<h3 id="_2">注册变量、宏和过滤器<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code>&quot;&quot;&quot;
+Mkdocs-macros 模块的基本示例
+&quot;&quot;&quot;
+
+import math
+
+def define_env(env):
+    &quot;&quot;&quot;
+    这是定义变量、宏和过滤器的钩子
+
+    - 变量：包含环境变量的字典
+    - 宏：一个装饰函数，用于声明一个宏。
+    - 过滤器：带有一个或多个参数的函数，用于执行转换
+    &quot;&quot;&quot;
+
+    # 添加到 markdown 页面的变量字典中:
+    env.variables[&#39;baz&#39;] = &quot;John Doe&quot;
+
+    # 可以将 env.variables 视为一个命名空间，
+    #       使用点语法:
+    env.variables.baz = &quot;John Doe&quot;
+
+    @env.macro
+    def bar(x):
+        return (2.3 * x) + 7
+
+    # 可以用不同的名称声明一个宏:
+    def f(x):
+        return x * x
+    env.macro(f, &#39;barbaz&#39;)
+
+    # 或者导出某个预定义函数
+    env.macro(math.floor) # will be exported as &#39;floor&#39;
+
+
+    # 创建一个 jinja2 过滤器
+    @env.filter
+    def reverse(x):
+        &quot;反转字符串（和大写字母）&quot;
+        return x.upper()[::-1]
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>如果发生冲突，Python 模块中声明的变量将覆盖用户在 YAML 文件 ( extra ) 中创建的变量。这是一项安全功能，以确保该文件的维护者不会意外破坏程序员在模块中定义的设置。</p>
+</div>
+<h3 id="env">env 对象<a class="headerlink" href="#env" title="Permanent link">#</a></h3>
+<p>以下是该对象的常用属性（常量）或函数列表：</p>
+<table>
+<thead>
+<tr>
+<th>条目</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>variables</code></td>
+<td><em>attribute</em></td>
+<td>作为命名空间，包含了在 Markdown 页面中使用 <code>{{ ... }}</code> 符号表示的变量和宏，这个字典会根据配置文件中的 extra 部分的值进行初始化（还可以选择性地使用外部 YAML 文件进行初始化）。这个对象也可以通过点表示法进行访问；例如，<code>env.variables['foo']</code> 等同于 <code>env.variables.foo</code>。</td>
+</tr>
+<tr>
+<td><code>macro</code></td>
+<td><em>function</em></td>
+<td>一个装饰器函数，你可以用它来声明一个 Python 函数作为 Jinja2 可调用函数（在 MkDocs 中称为'macro'）。</td>
+</tr>
+<tr>
+<td><code>filters</code></td>
+<td><em>attribute</em></td>
+<td>一个 Jinja2 过滤器的列表（默认值为 None）。</td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><em>function</em></td>
+<td>一个用于声明 Python 函数为 Jinja2 自定义过滤器的装饰器。</td>
+</tr>
+<tr>
+<td><code>project_dir</code></td>
+<td><em>attribute</em></td>
+<td>MkDocs 项目的源代码目录（用于查找或包含其他文件）。</td>
+</tr>
+<tr>
+<td><code>conf</code></td>
+<td><em>attribute</em></td>
+<td>mkdocs.yaml 配置文件的内容。</td>
+</tr>
+<tr>
+<td><code>config</code></td>
+<td><em>attribute</em></td>
+<td>这是一个有用的对象；它包含了 MkDocs 的全局上下文 [^1]。</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td><em>attribute</em></td>
+<td>Markdown 页面的信息（例如标题等）。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">访问配置文件<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<p>可以从整个配置文件（<code>mkdocs.yaml</code>）中获取信息，例如 <code>site_description</code>、<code>theme</code>、<code>copyright</code> 等等。</p>
+<p><code>env</code> 对象的 <code>conf</code> 属性包含了这些信息。</p>
+<p>例如，可以定义这样的函数：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>@env.macro
+def site_info():
+    &quot;Return general info on the website (name, description and theme)&quot;
+    info = (env.conf[&#39;site_name&#39;], env.conf[&#39;site_description&#39;],
+            env.conf[&#39;theme&#39;].name)
+    return &quot;%s/%s (theme: %s)&quot; % info
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>请注意，通常被称为配置的内容在该模块中被称为 <code>env.conf</code>。这是因为在 <code>BasePlugin</code> 类中已经有 <code>env.config</code> 属性了。</p>
+<p>事实上，还可以在 <code>env.variables.config</code> 下找到相同的对象；换句话说，在 Markdown 页面中，可以通过 <code>{{ config }}</code> 访问它。</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p>为了获取文档目录（docs），您可以在 Python 模块中使用以下值：<code>env.conf['docs_dir']</code>。</p>
+</div>
+<h2 id="_4">控制结构<a class="headerlink" href="#_4" title="Permanent link">#</a></h2>
+<h3 id="_5">条件<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>### 标题
+{% if 变量 == &#39;某个值&#39; %}
+第一个版本：......
+{% else %}
+第二个版本：......
+{% endif %}
+</code></pre></div></td></tr></table></div>
+<h3 id="_6">循环<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>### 用户列表
+{% set users = [&#39;甲&#39;, &#39;乙&#39;, &#39;丙&#39;, &#39;丁&#39;] %}
+
+{% for user in users %}
+1. {{ user }}
+{% endfor %}
+</code></pre></div></td></tr></table></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+<h2 id="__comments">评论</h2>
+<script
+  src="https://giscus.app/client.js"
+  data-repo="yanedie/anotherblog"
+  data-repo-id="R_kgDOJyaFnQ"
+  data-category="Announcements"
+  data-category-id="DIC_kwDOJyaFnc4CZXYM"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<!-- Synchronize giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  /* Set palette on initial load */
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "dark" : "light";
+    giscus.setAttribute("data-theme", theme); // (1)!
+  }
+
+  /* Register event handlers after documented loaded */
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate" ? "dark" : "light";
+
+        /* Instruct giscus to change theme */
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="comment.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: MKDocs 添加评论">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                MKDocs 添加评论
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../python/career-fair.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 宣讲会">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                宣讲会
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Yanedie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.tooltips", "navigation.top", "navigation.tabs", "navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.sections", "navigation.footer", "toc.follow"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../javascripts/tablesort.js"></script>
+      
+        <script src="../../javascripts/open-in-new-tab.js"></script>
+      
+        <script src="../../javascripts/jquery.dataTables.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => { Fancybox.bind('[data-fancybox]',Object.assign({l10n:Fancybox.l10n.zh_CN},JSON.parse('{"Toolbar":{"display":{"left":[],"middle":["rotateCCW","rotateCW","flipX","flipY","reset"],"right":["close"]}},"Images":{"Panzoom":{"maxScale":2}}}'))); })</script></body>
+</html>

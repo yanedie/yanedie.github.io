@@ -1,0 +1,11 @@
+# 这两个变量不动
+# getErrorDict 函数第一个返回值，是一个包含 ts 文件内全部错误码的列表
+errorCode: 0
+# getErrorDict 函数第二个函数返回值，是一个包含 ts 文件内通用错误码的列表
+commonCode: 1
+
+# 修改以下两个变量
+# ts 文件所在路径
+tsPath: "./docs/assets/error_codes/error_code.ts"
+# 这里必须在引号内填入代表设备型号的 16 进制代码第五第六位，从 01 开始，会显示设备对应的错误码。
+nameIdx: "01"

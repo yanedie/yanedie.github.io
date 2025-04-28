@@ -1,0 +1,4942 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="If you are or want to be a JavaScript developer, then you must know how the JavaScript programs are executed internally. The knowledge of execution context and execution stack is vital to understand…">
+      
+      
+        <meta name="author" content="['[[Sukhjinder Arora]]']">
+      
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="auto-build.html">
+      
+      
+      <link rel="icon" href="../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Understanding Execution Context and Execution Stack in Javascript - Yanedie | Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet"/><style>.fancybox__caption { font-size: 0.7rem; }[data-fancybox] { cursor: pointer; }[data-md-color-scheme=default] figure[fancybox-only-dark] { display: none; }[data-md-color-scheme=slate] figure[fancybox-only-light] { display: none; }</style> <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/l10n/zh_CN.umd.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#what-is-an-execution-context" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../index.html" title="Yanedie | Notebook" class="md-header__button md-logo" aria-label="Yanedie | Notebook" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Yanedie | Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Understanding Execution Context and Execution Stack in Javascript
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yanedie/yanedie.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yanedie.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../blog/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  随笔
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../code/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  编程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../code/mkdocs/comment.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  爱折腾
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tech-comm/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  文档开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  收藏
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tags.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  标签
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Yanedie | Notebook" class="md-nav__button md-logo" aria-label="Yanedie | Notebook" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    Yanedie | Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yanedie/yanedie.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yanedie.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../blog/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    随笔
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            随笔
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    归档
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            归档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2024.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2024
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../code/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    编程
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            编程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    HTML&CSS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            HTML&CSS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/html&css/html.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/html&css/gmall.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTML+CSS 大作业：尚品汇
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    JavaScript
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../code/javascript/javascript-from-zero-to-hero/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 从入门到精通
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3_1" id="__nav_3_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript 从入门到精通
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/javascript-基础---第-1-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 基础 - 第 1 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/javascript-基础---第-2-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 基础 - 第 2 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/javascript-基础---第-3-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 基础 - 第 3 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/javascript-基础---第-4-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 基础 - 第 4 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/javascript-基础---第-5-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 基础 - 第 5 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/javascript-进阶---第-1-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 进阶 - 第 1 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/javascript-进阶---第-2-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 进阶 - 第 2 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/javascript-进阶---第-3-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 进阶 - 第 3 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/javascript-进阶---第-4-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript 进阶 - 第 4 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/web-apis---第-1-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web APIs - 第 1 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/web-apis---第-2-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web APIs - 第 2 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/web-apis---第-3-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web APIs - 第 3 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/web-apis---第-4-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web APIs - 第 4 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/web-apis---第-5-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web APIs - 第 5 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/javascript-from-zero-to-hero/web-apis---第-6-天.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web APIs - 第 6 天
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../code/javascript/the-complete-javascript-course/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    The Complete Javascript Course 2024: From Zero to Expert!
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            The Complete Javascript Course 2024: From Zero to Expert!
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2" id="__nav_3_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    All Coding Challenges
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            All Coding Challenges
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_1" id="__nav_3_3_2_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    javascript-fundamentals-part-1
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            javascript-fundamentals-part-1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-1/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-1/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-1/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-1/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_2" id="__nav_3_3_2_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    javascript-fundamentals-part-2
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            javascript-fundamentals-part-2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-2/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-2/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-2/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-2/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_3" id="__nav_3_3_2_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    developer-skills-editor-setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            developer-skills-editor-setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/developer-skills-editor-setup/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_4" id="__nav_3_3_2_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    javascript-in-the-browser-dom-and-events
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            javascript-in-the-browser-dom-and-events
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/javascript-in-the-browser-dom-and-events/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_5" id="__nav_3_3_2_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    data-structures-modern-operators-strings
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            data-structures-modern-operators-strings
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/data-structures-modern-operators-strings/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/data-structures-modern-operators-strings/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/data-structures-modern-operators-strings/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/data-structures-modern-operators-strings/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_6" id="__nav_3_3_2_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    a-closer-look-at-functions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            a-closer-look-at-functions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/a-closer-look-at-functions/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/a-closer-look-at-functions/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_7" id="__nav_3_3_2_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    working-with-arrays
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            working-with-arrays
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/working-with-arrays/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/working-with-arrays/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/working-with-arrays/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/working-with-arrays/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_8" id="__nav_3_3_2_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    object-oriented-programming-oop
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            object-oriented-programming-oop
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/object-oriented-programming-oop/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/object-oriented-programming-oop/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/object-oriented-programming-oop/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/object-oriented-programming-oop/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_2_9" id="__nav_3_3_2_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    asynchronous-javascript
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            asynchronous-javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/asynchronous-javascript/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/asynchronous-javascript/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/javascript/the-complete-javascript-course/coding-challenges/asynchronous-javascript/coding-challenge-html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Challenge #3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    React
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            React
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_1" id="__nav_3_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    React 18 for Beginners
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            React 18 for Beginners
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/building-components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/styling-components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Styling Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/managing-component-state.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managing Component State
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/buliding-a-form.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Buliding a Form
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/fetching-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connecting to the Backend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_1_6" id="__nav_3_4_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Building a Video Game Discovery App
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_4_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Building a Video Game Discovery App
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01. Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-responsive-layout.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02. Responsive Layout
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-navigation-bar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03. Navigation Bar
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-color-mode.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04. Color Mode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-custom-hooks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05. Custom Hooks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-game-card.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06. Game Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-displaying-platform-icons.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07. Displaying Platform Icons
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-displaying-critic-score.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08. Displaying Critic Score
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-getting-optimized-images.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09. Getting Optimized Images
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-loading-skeleton.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10. Loading Skeleton
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-removing-duplicated-styles-refactor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11. Removing Duplicated Styles (Refactor)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-fetching-the-genres.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12. Fetching the Genres
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-creating-a-generic-data-fetching-hook.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13. Creating a Generic Data Fetching Hook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-displaying-the-genres.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14. Displaying the Genres
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-filtering-games.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15. Filtering Games
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-refactoring---extracting-a-query-object.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16. Refactoring   Extracting a Query Object
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-building-sort-selector.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17. Building Sort Selector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-building-search-input.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    18. Building Search Input
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-game-heading.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    19. Game Heading
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-cleaning-up.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    20. Cleaning up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-adding-emojis-&-shipping-static-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    21. Adding Emojis & Shipping Static Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-customizing-the-chakra-theme.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    22. Customizing the Chakra Theme
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/mosh/project/-refactoring-game-grid.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    23. Refactoring Game Grid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    The Ultimate React Course 2024 React, Redux & More
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            The Ultimate React Course 2024 React, Redux & More
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/react/jonas/note.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Note
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    爱折腾
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            爱折腾
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MKDocs 相关
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            MKDocs 相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/mkdocs/comment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MKDocs 添加评论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/mkdocs/mkdocs-macros.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MKDocs-Macros 插件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/python/career-fair.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    宣讲会
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/python/error-code.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    错误码
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/python/gitea-dl.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    下载 Gitea 仓库分支文件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../tech-comm/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    文档开发
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            文档开发
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tech-comm/vale-linter-vs-code.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用 Vale 进行英文风格检查
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tech-comm/version.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用查询参数避免旧软件打开新文档
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    收藏
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            收藏
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Understanding Execution Context and Execution Stack in Javascript
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="understanding-execution-context-and-execution-stack-in-javascript.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Understanding Execution Context and Execution Stack in Javascript
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-an-execution-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is an Execution Context?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-execution-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Execution Context
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execution Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-is-the-execution-context-created" class="md-nav__link">
+    <span class="md-ellipsis">
+      How is the Execution Context created?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-creation-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Creation Phase
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lexical-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lexical Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Record
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-to-the-outer-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference to the Outer Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      This Binding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variable Environment:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execution Phase
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="auto-build.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    自动构建
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="十分钟教会你申请软著（2023年6月线上申请版本）.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    十分钟教会你申请软著（2023年6月线上申请版本）
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="我如何零基础转行成为一个自信的前端.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    我是如何零基础转行成为一个自信的前端
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="执行上下文.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    执行上下文
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tags.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    标签
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关于
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-an-execution-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is an Execution Context?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-execution-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Execution Context
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execution Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-is-the-execution-context-created" class="md-nav__link">
+    <span class="md-ellipsis">
+      How is the Execution Context created?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-creation-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Creation Phase
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lexical-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lexical Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Record
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-to-the-outer-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference to the Outer Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      This Binding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variable Environment:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execution Phase
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../tags.html#tag:clippings" class="md-tag">clippings</a>
+      
+    
+  </nav>
+
+
+  
+  
+
+
+  <h1>Understanding Execution Context and Execution Stack in Javascript</h1>
+
+<h2 id="what-is-an-execution-context">What is an Execution Context?<a class="headerlink" href="#what-is-an-execution-context" title="Permanent link">#</a></h2>
+<p>Simply put, an execution context is an abstract concept of an environment where the Javascript code is evaluated and executed. Whenever any code is run in JavaScript, it’s run inside an execution context.</p>
+<h2 id="types-of-execution-context">Types of Execution Context<a class="headerlink" href="#types-of-execution-context" title="Permanent link">#</a></h2>
+<p>There are three types of execution context in JavaScript.</p>
+<ul>
+<li><strong>Global Execution Context —</strong> This is the default or base execution context. The code that is not inside any function is in the global execution context. It performs two things: it creates a global object which is a window object (in the case of browsers) and sets the value of <code>this</code> to equal to the global object. There can only be one global execution context in a program.</li>
+<li><strong>Functional Execution Context —</strong> Every time a function is invoked, a brand new execution context is created for that function. Each function has its own execution context, but it’s created when the function is invoked or called. There can be any number of function execution contexts. Whenever a new execution context is created, it goes through a series of steps in a defined order which I will discuss later in this article.</li>
+<li><strong>Eval Function Execution Context —</strong> Code executed inside an <code>eval</code>function also gets its own execution context, but as <code>eval</code>isn’t usually used by JavaScript developers, so I will not discuss it here.</li>
+</ul>
+<h2 id="execution-stack">Execution Stack<a class="headerlink" href="#execution-stack" title="Permanent link">#</a></h2>
+<p>Execution stack, also known as “calling stack” in other programming languages, is a stack with a LIFO (Last in, First out) structure, which is used to store all the execution context created during the code execution.</p>
+<p>When the JavaScript engine first encounters your script, it creates a global execution context and pushes it to the current execution stack. Whenever the engine finds a function invocation, it creates a new execution context for that function and pushes it to the top of the stack.</p>
+<p>The engine executes the function whose execution context is at the top of the stack. When this function completes, its execution stack is popped off from the stack, and the control reaches to the context below it in the current stack.</p>
+<p>Let’s understand this with a code example below:</p>
+<div class="language-JavaScript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Hello World!&#39;</span><span class="p">;</span><span class="kd">function</span><span class="w"> </span><span class="nx">first</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Inside first function&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">second</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Again inside first function&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="kd">function</span><span class="w"> </span><span class="nx">second</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Inside second function&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="nx">first</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Inside Global Execution Context&#39;</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>When the above code loads in the browser, the Javascript engine creates a global execution context and pushes it to the current execution stack. When a call to <code>first()</code> is encountered, the Javascript engines creates a new execution context for that function and pushes it to the top of the current execution stack.</p>
+<p>When the <code>second()</code> function is called from within the <code>first()</code> function, the Javascript engine creates a new execution context for that function and pushes it to the top of the current execution stack. When the <code>second()</code> function finishes, its execution context is popped off from the current stack, and the control reaches to the execution context below it, that is the <code>first()</code> function execution context.</p>
+<p>When the <code>first()</code> finishes, its execution stack is removed from the stack and control reaches to the global execution context. Once all the code is executed, the JavaScript engine removes the global execution context from the current stack.</p>
+<h2 id="how-is-the-execution-context-created">How is the Execution Context created?<a class="headerlink" href="#how-is-the-execution-context-created" title="Permanent link">#</a></h2>
+<p>Up until now, we have seen how the JavaScript engine manages the execution context, Now let’s understand how an execution context is created by the JavaScript engine.</p>
+<p>The execution context is created in two phases: <strong>1) Creation Phase</strong> and <strong>2) Execution Phase.</strong></p>
+<h2 id="the-creation-phase">The Creation Phase<a class="headerlink" href="#the-creation-phase" title="Permanent link">#</a></h2>
+<p>The execution context is created during the creation phase. Following things happen during the creation phase:</p>
+<ol>
+<li><strong>LexicalEnvironment</strong> component is created.</li>
+<li><strong>VariableEnvironment</strong> component is created.</li>
+</ol>
+<p>So the execution context can be conceptually represented as follows:</p>
+<div class="language-JavaScript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nx">ExecutionContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">LexicalEnvironment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">ref</span><span class="p">.</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">LexicalEnvironment</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">memory</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">VariableEnvironment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">ref</span><span class="p">.</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">VariableEnvironment</span><span class="w"> </span><span class="ow">in</span><span class="w">  </span><span class="nx">memory</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="lexical-environment">Lexical Environment<a class="headerlink" href="#lexical-environment" title="Permanent link">#</a></h2>
+<p>The <a href="http://ecma-international.org/ecma-262/6.0/">official ES6</a> docs define Lexical Environment as</p>
+<blockquote>
+<p>A <em>Lexical Environment</em> is a specification type used to define the association of <em>Identifiers</em> to specific variables and functions based upon the lexical nesting structure of ECMAScript code. A Lexical Environment consists of an Environment Record and a possibly null reference to an <em>outer</em> Lexical Environment.</p>
+</blockquote>
+<p>Simply put, A <em>lexical environment</em> is a structure that holds <strong>identifier-variable mapping</strong>. (here <strong>identifier</strong> refers to the name of variables/functions, and the <strong>variable</strong> is the reference to actual object [including function object and array object] or primitive value).</p>
+<p>For example, consider the following snippet:</p>
+<div class="language-JavaScript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">40</span><span class="p">;</span><span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>So the lexical environment for the above snippet looks like this:</p>
+<div class="language-JavaScript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nx">lexicalEnvironment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="mf">40</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">ref</span><span class="p">.</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="kd">function</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Each Lexical Environment has three components:</p>
+<ol>
+<li>Environment Record</li>
+<li>Reference to the outer environment,</li>
+<li>This binding.</li>
+</ol>
+<h2 id="environment-record"><strong>Environment Record</strong><a class="headerlink" href="#environment-record" title="Permanent link">#</a></h2>
+<p>The environment record is the place where the variable and function declarations are stored inside the lexical environment.</p>
+<p>There are also two types of <em>environment record</em> :</p>
+<ul>
+<li><strong>Declarative environment record —</strong> As its name suggests stores variable and function declarations. The lexical environment for function code contains a declarative environment record.</li>
+<li><strong>Object environment record —</strong> The lexical environment for global code contains a objective environment record. Apart from variable and function declarations, the object environment record also stores a global binding object (window object in browsers). So for each of binding object’s property (in case of browsers, it contains properties and methods provided by browser to the window object), a new entry is created in the record.</li>
+</ul>
+<p><strong>Note —</strong> For the <strong>function code</strong>, the <em>environment record</em> also contains an <code>arguments</code> object that contains the mapping between indexes and arguments passed to the function and the <em>length(number)</em> of the arguments passed into the function. For example, an argument object for the below function looks like this:</p>
+<div class="language-JavaScript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span><span class="c1">// argument object</span>
+<span class="nx">Arguments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="mf">0</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">length</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">},</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="reference-to-the-outer-environment">Reference to the Outer Environment<a class="headerlink" href="#reference-to-the-outer-environment" title="Permanent link">#</a></h2>
+<p>The <strong>reference to the outer environment</strong> means it has access to its outer lexical environment. That means that the JavaScript engine can look for variables inside the outer environment if they are not found in the current lexical environment.</p>
+<h2 id="this-binding">This Binding<a class="headerlink" href="#this-binding" title="Permanent link">#</a></h2>
+<p>In this component, the value of <code>this</code> is determined or set.</p>
+<p>In the global execution context, the value of <code>this</code> refers to the global object. (in browsers, <code>this</code> refers to the Window Object).</p>
+<p>In the function execution context, the value of <code>this</code> depends on how the function is called. If it is called by an object reference, then the value of <code>this</code> is set to that object, otherwise, the value of <code>this</code> is set to the global object or <code>undefined</code>(in strict mode). For example:</p>
+<div class="language-JavaScript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;peter&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">birthYear</span><span class="o">:</span><span class="w"> </span><span class="mf">1994</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">calcAge</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">2018</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">birthYear</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span><span class="nx">person</span><span class="p">.</span><span class="nx">calcAge</span><span class="p">();</span><span class="w"> </span>
+<span class="c1">// &#39;this&#39; refers to &#39;person&#39;, because &#39;calcAge&#39; was called with //&#39;person&#39; object referenceconst calculateAge = person.calcAge;</span>
+<span class="nx">calculateAge</span><span class="p">();</span>
+<span class="c1">// &#39;this&#39; refers to the global window object, because no object reference was given</span>
+</code></pre></div></td></tr></table></div>
+<p>Abstractly, the lexical environment looks like this in pseudocode:</p>
+<div class="language-JavaScript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nx">GlobalExectionContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">LexicalEnvironment</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">EnvironmentRecord</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Object&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Identifier bindings go here</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">outer</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="kc">null</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">this</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nb">global</span><span class="w"> </span><span class="nx">object</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span><span class="nx">FunctionExectionContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">LexicalEnvironment</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">EnvironmentRecord</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Declarative&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Identifier bindings go here</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">outer</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Global</span><span class="w"> </span><span class="nx">or</span><span class="w"> </span><span class="nx">outer</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">environment</span><span class="w"> </span><span class="nx">reference</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">this</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">depends</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">how</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">called</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="variable-environment">Variable Environment:<a class="headerlink" href="#variable-environment" title="Permanent link">#</a></h2>
+<p>It’s also a Lexical Environment whose EnvironmentRecord holds bindings created by <em>VariableStatements</em> within this execution context.</p>
+<p>As written above, the variable environment is also a lexical environment, So it has all the properties and components of a lexical environment as defined above.</p>
+<p>In ES6, one difference between <strong>LexicalEnvironment</strong> component and the <strong>VariableEnvironment</strong> component is that the former is used to store function declaration and variable (<code>let</code>and <code>const</code>) bindings, while the latter is used to store the variable <code>(var)</code> bindings only.</p>
+<h2 id="execution-phase">Execution Phase<a class="headerlink" href="#execution-phase" title="Permanent link">#</a></h2>
+<p>In this phase assignments to all those variables are done and the code is finally executed.</p>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h2>
+<p>Let’s look at some example to understand the above concepts:</p>
+<div class="language-JavaScript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">c</span><span class="p">;</span><span class="kd">function</span><span class="w"> </span><span class="nx">multiply</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span><span class="w"> </span><span class="nx">f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nx">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">g</span><span class="p">;</span>
+<span class="p">}</span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">multiply</span><span class="p">(</span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>When the above code is executed, the JavaScript engine creates a global execution context to execute the global code. So the global execution context will look something like this during the creation phase:</p>
+<div class="language-JavaScript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nx">GlobalExectionContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="nx">LexicalEnvironment</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">EnvironmentRecord</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Object&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Identifier bindings go here</span>
+<span class="w">      </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">uninitialized</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">uninitialized</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">multiply</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">func</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">outer</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="kc">null</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">ThisBinding</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Global</span><span class="w"> </span><span class="nb">Object</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="p">},</span><span class="w">  </span><span class="nx">VariableEnvironment</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">EnvironmentRecord</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Object&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Identifier bindings go here</span>
+<span class="w">      </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="kc">undefined</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">outer</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="kc">null</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">ThisBinding</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Global</span><span class="w"> </span><span class="nb">Object</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>During the execution phase, the variable assignments are done. So the global execution context will look something like this during the execution phase.</p>
+<div class="language-JavaScript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nx">GlobalExectionContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">LexicalEnvironment</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">EnvironmentRecord</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Object&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Identifier bindings go here</span>
+<span class="w">      </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">multiply</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">func</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">outer</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="kc">null</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">ThisBinding</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Global</span><span class="w"> </span><span class="nb">Object</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="p">},</span><span class="nx">VariableEnvironment</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">EnvironmentRecord</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Object&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Identifier bindings go here</span>
+<span class="w">      </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="kc">undefined</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">outer</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="kc">null</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">ThisBinding</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Global</span><span class="w"> </span><span class="nb">Object</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>When a call to function <code>multiply(20, 30)</code> is encountered, a new function execution context is created to execute the function code. So the function execution context will look something like this during the creation phase:</p>
+<div class="language-JavaScript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nx">FunctionExectionContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">LexicalEnvironment</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">EnvironmentRecord</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Declarative&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Identifier bindings go here</span>
+<span class="w">      </span><span class="nx">Arguments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="mf">0</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span><span class="w"> </span><span class="nx">length</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">outer</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">GlobalLexicalEnvironment</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">ThisBinding</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Global</span><span class="w"> </span><span class="nb">Object</span><span class="w"> </span><span class="nx">or</span><span class="w"> </span><span class="kc">undefined</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span><span class="nx">VariableEnvironment</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">EnvironmentRecord</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Declarative&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Identifier bindings go here</span>
+<span class="w">      </span><span class="nx">g</span><span class="o">:</span><span class="w"> </span><span class="kc">undefined</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">outer</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">GlobalLexicalEnvironment</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">ThisBinding</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Global</span><span class="w"> </span><span class="nb">Object</span><span class="w"> </span><span class="nx">or</span><span class="w"> </span><span class="kc">undefined</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>After this, the execution context goes through the execution phase that means assignments to the variables inside the function are done. So the function execution context will look something like this during the execution phase:</p>
+<div class="language-JavaScript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nx">FunctionExectionContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">LexicalEnvironment</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">EnvironmentRecord</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Declarative&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Identifier bindings go here</span>
+<span class="w">      </span><span class="nx">Arguments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="mf">0</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span><span class="w"> </span><span class="nx">length</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">outer</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">GlobalLexicalEnvironment</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">ThisBinding</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Global</span><span class="w"> </span><span class="nb">Object</span><span class="w"> </span><span class="nx">or</span><span class="w"> </span><span class="kc">undefined</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span><span class="nx">VariableEnvironment</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">EnvironmentRecord</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Declarative&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Identifier bindings go here</span>
+<span class="w">      </span><span class="nx">g</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">outer</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">GlobalLexicalEnvironment</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">ThisBinding</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Global</span><span class="w"> </span><span class="nb">Object</span><span class="w"> </span><span class="nx">or</span><span class="w"> </span><span class="kc">undefined</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>After the function completes, the returned value is stored inside <code>c</code>. So the global lexical environment is updated. After that, the global code completes and the program finishes.</p>
+<p><strong>Note —</strong> As you might have noticed that the <code>let</code> and <code>const</code> defined variables do not have any value associated with them during the creation phase, but <code>var</code> defined variables are set to <code>undefined</code>.</p>
+<p>This is because, during the creation phase, the code is scanned for variable and function declarations, while the function declaration is stored in its entirety in the environment, the variables are initially set to <code>undefined</code>(in case of <code>var</code>) or remain uninitialized (in case of <code>let</code>and <code>const</code>).</p>
+<p>This is the reason why you can access <code>var</code>defined variables before they are declared (though <code>undefined</code>) but get a reference error when accessing <code>let</code> and <code>const</code> variables before they are declared.</p>
+<p>This is, what we call hoisting.</p>
+<p><strong>Note —</strong> During the execution phase, if the JavaScript engine couldn’t find the value of <code>let</code> variable at the actual place it was declared in the source code, then it will assign it the value of <code>undefined</code>.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">#</a></h2>
+<p>So we have discussed how JavaScript programs are executed internally. While it’s not necessary that you learn all these concepts to be an awesome JavaScript developer, having a decent understanding of the above concepts will help you to understand other concepts such as Hoisting, Scope, and Closures more easily and deeply.</p>
+<p>That’s it and if you found this article helpful, please hit the 👏 button and feel free to comment below! I’d be happy to talk 😃</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+<h2 id="__comments">评论</h2>
+<script
+  src="https://giscus.app/client.js"
+  data-repo="yanedie/anotherblog"
+  data-repo-id="R_kgDOJyaFnQ"
+  data-category="Announcements"
+  data-category-id="DIC_kwDOJyaFnc4CZXYM"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<!-- Synchronize giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  /* Set palette on initial load */
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "dark" : "light";
+    giscus.setAttribute("data-theme", theme); // (1)!
+  }
+
+  /* Register event handlers after documented loaded */
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate" ? "dark" : "light";
+
+        /* Instruct giscus to change theme */
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 收藏">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                收藏
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="auto-build.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 自动构建">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                自动构建
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Yanedie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.tooltips", "navigation.top", "navigation.tabs", "navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.sections", "navigation.footer", "toc.follow"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
+      
+        <script src="../javascripts/open-in-new-tab.js"></script>
+      
+        <script src="../javascripts/jquery.dataTables.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => { Fancybox.bind('[data-fancybox]',Object.assign({l10n:Fancybox.l10n.zh_CN},JSON.parse('{"Toolbar":{"display":{"left":[],"middle":["rotateCCW","rotateCW","flipX","flipY","reset"],"right":["close"]}},"Images":{"Panzoom":{"maxScale":2}}}'))); })</script></body>
+</html>
