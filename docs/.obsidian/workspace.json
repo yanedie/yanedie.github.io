@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "1ac8ac92167bbb18",
+        "id": "f9305d3d57ba34c5",
         "type": "tabs",
         "children": [
           {
-            "id": "681fbf720dd79057",
+            "id": "c963277da3876bda",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "code/react/mosh/project/22. Customizing the Chakra Theme.md",
-                "mode": "preview",
-                "source": true
-              }
+                "file": "code/javascript/the-complete-javascript-course/coding-challenges/javascript-fundamentals-part-1/coding-challenge-1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "coding-challenge-1"
             }
           }
         ]
@@ -38,8 +40,11 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
             }
           },
           {
@@ -54,7 +59,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
             }
           },
           {
@@ -62,7 +69,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
             }
           }
         ]
@@ -80,35 +89,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c51869547455d696",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "code/react/mosh/project/22. Customizing the Chakra Theme.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
-            "id": "2f0642645fda6feb",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "code/react/mosh/project/22. Customizing the Chakra Theme.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
             "id": "463ea64bc69aa534",
             "type": "leaf",
             "state": {
@@ -116,33 +96,83 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
             }
           },
           {
-            "id": "677d899b91c92a7a",
+            "id": "457ce84dacbdb565",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          },
+          {
+            "id": "b67f481e698b5baf",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "code/mkdocs hooks.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "mkdocs hooks 的反向链接列表"
+            }
+          },
+          {
+            "id": "7ac3fa3f945a3bc4",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "code/react/mosh/project/22. Customizing the Chakra Theme.md"
-              }
+                "file": "code/mkdocs hooks.md"
+              },
+              "icon": "lucide-list",
+              "title": "mkdocs hooks 的大纲"
             }
           },
           {
-            "id": "77b4d2a702572ee3",
+            "id": "05082acd011aad48",
             "type": "leaf",
             "state": {
-              "type": "calendar",
-              "state": {}
+              "type": "outgoing-link",
+              "state": {
+                "file": "code/mkdocs hooks.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "mkdocs hooks 的出链列表"
+            }
+          },
+          {
+            "id": "e6f76fcade1c8493",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -152,55 +182,59 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "templater-obsidian:Templater": false
+      "templater-obsidian:Templater": false,
+      "media-extended:Open media": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "681fbf720dd79057",
+  "active": "c963277da3876bda",
   "lastOpenFiles": [
-    "code/react/mosh/project/21. Adding Emojis & Shipping Static Data.md",
-    "code/react/mosh/project/22. Customizing the Chakra Theme.md",
-    "code/react/mosh/project/23. Refactoring Game Grid.md",
-    "code/react/mosh/project/Pasted image 20240817002418.png",
-    "code/react/mosh/project/14. Displaying the Genres.md",
-    "code/react/mosh/project/Pasted image 20240816235731.png",
-    "code/react/mosh/project/Pasted image 20240817001104.png",
-    "code/react/mosh/project/Pasted image 20240817003150.png",
-    "code/mkdocs hooks.md",
-    "Pasted image 20240816235731.png",
-    "Pasted image 20240817001104.png",
-    "code/react/mosh/1.Building Components.md",
-    "code/react/mosh/project/20. Cleaning up.md",
-    "code/react/mosh/project/19. Game Heading.md",
-    "code/react/mosh/project/17. Building Sort Selector.md",
-    "code/react/mosh/project/18. Building Search Input.md",
-    "code/react/mosh/5.Fetching data.md",
-    "Pasted image 20240817003150.png",
+    "code/javascript/the-complete-javascript-course/coding-challenges/a-closer-look-at-functions/coding-challenge-1.md",
+    "code/javascript/javascript-from-zero-to-hero/JavaScript 基础 - 第 2 天.md",
+    "code/javascript/javascript-from-zero-to-hero/JavaScript 基础 - 第 1 天.md",
+    "code/javascript/javascript-from-zero-to-hero/index.md",
+    "en/index.md",
+    "about.md",
+    "nav.md",
     "tags.md",
-    "Pasted image 20240817002418.png",
-    "未命名.md",
-    "code/react/mosh/project/16. Refactoring - Extracting a Query Object.md",
-    "blog/posts/2024-08-19.md",
-    "code/react/mosh/project/15. Filtering Games.md",
-    "blog/posts/2024-08-17.md",
-    "2024-08-17.md",
+    "code/javascript/Web API.md",
+    "code/javascript/JavaScript进阶笔记.md",
+    "Clippings/Understanding Execution Context and Execution Stack in Javascript.md",
+    "Clippings/执行上下文.md",
+    "tech-comm/employer-in-tc.md",
+    "tech-comm/index.md",
+    "tech-comm/Vale-linter-vs-code.md",
+    "index.md",
+    "code/react/mosh/1.Building Components.md",
+    "code/react/mosh/2.Styling Components.md",
+    "code/index.md",
+    "code/javascript/JavaScript基础笔记.md",
+    "code/front-end/Vue.js/note.md",
+    "code/react/mosh/3.Managing Component State.md",
+    "Clippings",
+    "code/react/mosh/5.Fetching data.md",
+    "code/mkdocs hooks.md",
     "code/react/mosh/project/01. Installation.md",
-    "code/react/mosh/project/02. Responsive Layout.md",
-    "code/react/mosh/project/03. Navigation Bar.md",
-    "code/react/mosh/project/04. Color Mode.md",
-    "code/react/mosh/project/05. Custom Hooks.md",
-    "code/react/mosh/project/06. Game Card.md",
-    "code/react/mosh/project/11. Removing Duplicated Styles (Refactor).md",
+    "code/react/mosh/tutorial",
+    "面试经验教训.md",
     "未命名",
-    "assets/logo.svg",
+    "001 Section OverviewPT2.275S.webp",
+    "未命名.canvas",
+    "002 The Component LifecyclePT7.746S.webp",
+    "code/react/mosh/images/Pasted image 20240609155801.png",
+    "code/react/mosh/images/Pasted image 20240609155252.png",
+    "code/react/mosh/images/Pasted image 20240609154853.png",
+    "code/react/mosh/images/Pasted image 20240609014452.png",
+    "code/react/mosh/images/Pasted image 20240609013325.png",
+    "code/react/mosh/images/Pasted image 20240609013354.png",
+    "code/react/mosh/images/Pasted image 20240609011944.png",
+    "code/react/mosh/images/Pasted image 20240609011302.png",
     "assets/templates",
-    "assets/memory/IMG_2463.JPG",
     "assets/memory",
     "assets/新建文件夹",
     "javascripts/photo.js",
     "javascripts/新建 文本文档.txt",
     "stylesheets/photo.css",
-    "stylesheets/output.css",
-    "stylesheets/output.css.map",
-    "stylesheets/s.scss"
+    "stylesheets/output.css"
   ]
 }

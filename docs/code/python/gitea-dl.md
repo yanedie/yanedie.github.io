@@ -4,7 +4,7 @@ updated: 2024-07-09T01:06
 ---
 # 下载 Gitea 仓库分支文件
 
-[Mkdocs-Macros](../mkdocs-plugins/mkdocs-macros/mkdocs-macros.md) 插件能够运行 python 脚本，还能够将 Markdown 转为 jinja 模板，这样能够做到数据与模板（样式）相分离。而在运行网站时，会自动加载 Mkdocs-Macros 插件。借此萌生了一个想法，爬取 Gitea[^1] 仓库的 Markdown 文件或者是变量文件（.yml）至本地网站目录，做到一方修改，多方同步。
+[Mkdocs-Macros](../mkdocs/mkdocs-macros.md) 插件能够运行 python 脚本，还能够将 Markdown 转为 jinja 模板，这样能够做到数据与模板（样式）相分离。而在运行网站时，会自动加载 Mkdocs-Macros 插件。借此萌生了一个想法，爬取 Gitea[^1] 仓库的 Markdown 文件或者是变量文件（.yml）至本地网站目录，做到一方修改，多方同步。
 
 !!! tip
 

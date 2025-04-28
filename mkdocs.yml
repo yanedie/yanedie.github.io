@@ -1,15 +1,13 @@
 site_name: Yanedie | Notebook
 repo_name: yanedie.github.io
 repo_url: https://github.com/yanedie/yanedie.github.io
-copyright: Copyright &copy; 2024 Yanedie
+copyright: Copyright &copy; 2025 Yanedie
 
 use_directory_urls: false
 
 extra_css:
   - stylesheets/extra.css
-  - stylesheets/photo.css
 extra_javascript:
-  - javascripts/photo.js
   - javascripts/tablesort.js
   - javascripts/open-in-new-tab.js
   - javascripts/jquery.dataTables.min.js
@@ -26,7 +24,8 @@ plugins:
       categories_toc: true
   - tags:
       tags_file: tags.md
-  # - macros
+  - macros
+  - meta
 
 hooks:
   - hooks/fancybox.py

@@ -1,8 +1,8 @@
 ---
 created: 2024-03-01T12:18
-updated: 2024-03-10T23:53
+updated: 2024-09-16T22:58
 ---
-·
+
 # Jonas React Course Note
 
 ## Building our first React App
@@ -44,6 +44,7 @@ function Message(props) {
 ```
 
 ## Challenge #1 Profile Card (v1)
+
 ```javascript title="index.js"
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
@@ -101,7 +102,8 @@ root.render(
   </StrictMode>
 );
 ```
-![Profile Card V1](../../../assets/images/profile-card-v1.png)
+
+![Profile Card V1](https://pub-35f8b3b9fb1540899fcf1e6fb1fab07b.r2.dev/profile-card-v1.png)
 
 ## 渲染列表
 
@@ -253,4 +255,3 @@ function Order({ openHour, closeHour }) {
   )
 }
 ```
-

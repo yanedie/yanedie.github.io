@@ -23,14 +23,14 @@ def on_page_markdown(markdown, page, config, files):
     # 为所有页面开启评论
     page.meta['comments'] = True
 
-    # 以过滤后的文件名作为 frontmatter 的 title
-    filename = os.path.basename(page.file.src_path)
-    # 去除格式后缀
-    title = os.path.splitext(filename)[0]
+    # # 以过滤后的文件名作为 frontmatter 的 title
+    # filename = os.path.basename(page.file.src_path)
+    # # 去除格式后缀
+    # title = os.path.splitext(filename)[0]
     # 去掉数字和点
-    title = re.sub(r'^\d+\.\s*', '', title)
+    # title = re.sub(r'^\d+\.\s*', '', title)
     # 下划线和横杠换成空格
-    page.meta['title'] = title
+    # page.meta['title'] = title
 
     # 替换 hl 的规则
     def replace_hl(match):
@@ -50,21 +50,4 @@ def on_page_markdown(markdown, page, config, files):
     # 查找并删除代码块第一行的 fold 和一个空格
     if page.file.src_uri != "nav.md":
         markdown = autocorrect.format(re.sub(r'(```\w+) fold(.*)', remove_fold, markdown))
-
-    # 文章底部添加最后更新时间
-    if re.search(r'blog/index.html|tags/index.html', page.url):
         return markdown
-    else:
-        if 'created' in page.meta:
-            created_time_str = page.meta['created']
-            created_dt = datetime.strptime(created_time_str, "%Y-%m-%dT%H:%M")
-            created_time = created_dt.strftime("%Y-%m-%d %H:%M")
-            creation_note = f':material-clock-plus-outline:{{title="创建时间"}} {created_time}'
-        if 'updated' in page.meta:
-            time_str = page.meta['updated']
-            dt = datetime.strptime(time_str, "%Y-%m-%dT%H:%M")
-            last_updated_time = dt.strftime("%Y-%m-%d %H:%M")
-            revision_note = f':material-clock-edit-outline:{{title="最后更新"}} {last_updated_time}'
-            markdown = f'{markdown}\n\n<span style="font-size:.68rem">{creation_note} {revision_note}'
-        return markdown
-
