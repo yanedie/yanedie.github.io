@@ -3,8 +3,8 @@
     * blog/*.md
 * [编程](code/index.md)
     * HTML&CSS
-        * [HTML](code\html&css\html.md)
-        * [HTML+CSS 大作业：尚品汇](code\html&css\gmall.md)
+        * [HTML](code/html&css/html.md)
+        * [HTML+CSS 大作业：尚品汇](code/html&css/gmall.md)
     * JavaScript
         * [JavaScript 从入门到精通](code/javascript/javascript-from-zero-to-hero/index.md)
             * code/javascript/javascript-from-zero-to-hero/*.md
